@@ -1,0 +1,7 @@
+gender,previous_set_winner,p_wins,lo,hi,n_sets,mean_prev_winner_d_logrank
+All,serves first,0.64433,0.63299,0.65551,7403,0.55022
+All,receives first,0.64518,0.63640,0.65386,13139,0.61134
+Men,serves first,0.63882,0.62438,0.65301,4632,0.55618
+Men,receives first,0.64530,0.63470,0.65576,9267,0.64624
+Women,serves first,0.65355,0.63511,0.67155,2771,0.53991
+Women,receives first,0.64489,0.62914,0.66033,3872,0.52531

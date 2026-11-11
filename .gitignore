@@ -1,10 +1,13 @@
-# Raw data (third-party, large; re-download per README)
-*.csv
-tml-data/
-wta/
+# Raw data (third-party, large; re-download with `make data`, see README)
+/tml-data/
+/pbp-data/
+/wta/
+/*.csv
 
-# Analysis work in progress (not yet tracked)
-set_first_serve/
+# Analysis artefacts that are NOT committed (results/ and figures/ ARE committed)
+analyses/*/cache/
+analyses/reviews/scratch/
+*.tmp.png
 
 # Python
 __pycache__/
@@ -14,6 +17,8 @@ venv/
 env/
 .ipynb_checkpoints/
 *.egg-info/
+build/
+dist/
 .pytest_cache/
 .mypy_cache/
 

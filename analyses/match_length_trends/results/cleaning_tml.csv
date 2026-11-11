@@ -1,0 +1,9 @@
+step,count
+"match rows 2014-2026 (ATP, WTA, Challenger)",133366
+"  removed: Davis/Fed Cup, Olympics, Finals etc.",6351
+  removed: retirement / walkover / unparseable score,4953
+completed matches,122062
+  with minutes,112750
+"  minutes outside [20,480] (dropped from minute metrics)",16
+  with serve points,120442
+"  points/game outside [3.9,10.0] (dropped from point metrics)",23

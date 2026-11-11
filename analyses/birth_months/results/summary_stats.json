@@ -1,0 +1,665 @@
+{
+ "ATP+WTA|all": {
+  "Q1_over_Q4": 1.3610745859128468,
+  "chi2": 413.52145319352053,
+  "cramers_v": 0.035998657183460965,
+  "df": 11,
+  "n": 29009,
+  "p": 8.22651728572908e-82,
+  "quarter_chi2": 389.74022856456594,
+  "quarter_p": 3.693366614439269e-84,
+  "significant_months_holm05": [
+   "Jan",
+   "Feb",
+   "Mar",
+   "Apr",
+   "May",
+   "Jun",
+   "Aug",
+   "Oct",
+   "Nov",
+   "Dec"
+  ],
+  "trend": {
+   "dec_vs_jan_rate_ratio": 0.6891493703675254,
+   "dispersion_used": 2.381979032842031,
+   "p": 1.0415744423685866e-37,
+   "pearson_dispersion_estimated": 2.381979032842031,
+   "se": 0.002636908660487165,
+   "slope_per_month": -0.03384520349803939
+  }
+ },
+ "ATP+WTA|all_northern_hemisphere": {
+  "Q1_over_Q4": 1.373943800353704,
+  "chi2": 362.591146706916,
+  "cramers_v": 0.03675884391290209,
+  "df": 11,
+  "n": 24395,
+  "p": 5.236878991594817e-71,
+  "quarter_chi2": 340.77778628622485,
+  "quarter_p": 1.4807730073684423e-73,
+  "significant_months_holm05": [
+   "Jan",
+   "Feb",
+   "Mar",
+   "Apr",
+   "Aug",
+   "Oct",
+   "Nov",
+   "Dec"
+  ],
+  "trend": {
+   "dec_vs_jan_rate_ratio": 0.6853583757004539,
+   "dispersion_used": 2.719492821526146,
+   "p": 5.248401314619686e-29,
+   "pearson_dispersion_estimated": 2.719492821526146,
+   "se": 0.0030728099057622,
+   "slope_per_month": -0.03434667284762051
+  }
+ },
+ "ATP+WTA|all_southern_hemisphere": {
+  "Q1_over_Q4": 1.2931837355600284,
+  "chi2": 52.019035824718465,
+  "cramers_v": 0.035544703265246474,
+  "df": 11,
+  "n": 3743,
+  "p": 2.704868712328731e-07,
+  "quarter_chi2": 43.5775155052028,
+  "quarter_p": 1.8555714145141441e-09,
+  "significant_months_holm05": [
+   "Feb",
+   "Nov"
+  ],
+  "trend": {
+   "dec_vs_jan_rate_ratio": 0.7176693361084753,
+   "dispersion_used": 1.0934434421171486,
+   "p": 1.291942001207496e-09,
+   "pearson_dispersion_estimated": 1.0934434421171486,
+   "se": 0.004969807537669595,
+   "slope_per_month": -0.03015875915276678
+  }
+ },
+ "ATP+WTA|elite_20plus": {
+  "Q1_over_Q4": 1.3214322355596597,
+  "chi2": 43.52728523703031,
+  "cramers_v": 0.03755265218198743,
+  "df": 11,
+  "n": 2806,
+  "p": 8.789485290007195e-06,
+  "quarter_chi2": 30.12492394822305,
+  "quarter_p": 1.2990256599665777e-06,
+  "significant_months_holm05": [
+   "Feb",
+   "Nov",
+   "Dec"
+  ],
+  "trend": {
+   "dec_vs_jan_rate_ratio": 0.7295266858586179,
+   "dispersion_used": 1.5641418339967479,
+   "p": 2.9501795155337083e-05,
+   "pearson_dispersion_estimated": 1.5641418339967479,
+   "se": 0.00686308831933853,
+   "slope_per_month": -0.02866903006019629
+  }
+ },
+ "ATP+WTA|elite_top100": {
+  "Q1_over_Q4": 1.275446035892925,
+  "chi2": 30.257318557398122,
+  "cramers_v": 0.037272307559473625,
+  "df": 11,
+  "n": 1980,
+  "p": 0.0014436194412431958,
+  "quarter_chi2": 18.07478262596632,
+  "quarter_p": 0.0004245017055341876,
+  "significant_months_holm05": [
+   "Feb",
+   "Nov"
+  ],
+  "trend": {
+   "dec_vs_jan_rate_ratio": 0.757326967516266,
+   "dispersion_used": 1.486977886134317,
+   "p": 0.0015035463889911302,
+   "pearson_dispersion_estimated": 1.486977886134317,
+   "se": 0.007961286409482841,
+   "slope_per_month": -0.02526910849207658
+  }
+ },
+ "ATP+WTA|played": {
+  "Q1_over_Q4": 1.3189713472993672,
+  "chi2": 94.30160035094407,
+  "cramers_v": 0.032587099951703634,
+  "df": 11,
+  "n": 8073,
+  "p": 2.3826047074091197e-15,
+  "quarter_chi2": 83.00077830222764,
+  "quarter_p": 6.969989371123747e-18,
+  "significant_months_holm05": [
+   "Jan",
+   "Feb",
+   "Mar",
+   "Apr",
+   "Oct",
+   "Nov",
+   "Dec"
+  ],
+  "trend": {
+   "dec_vs_jan_rate_ratio": 0.7181025499981001,
+   "dispersion_used": 1.0,
+   "p": 1.373477443279728e-20,
+   "pearson_dispersion_estimated": 0.7664508836785396,
+   "se": 0.0032361532909645652,
+   "slope_per_month": -0.030103899348850535
+  }
+ },
+ "ATP+WTA|played_northern_hemisphere": {
+  "Q1_over_Q4": 1.3073376729335944,
+  "chi2": 73.5528995528454,
+  "cramers_v": 0.031899789904693825,
+  "df": 11,
+  "n": 6571,
+  "p": 2.5664278417746746e-11,
+  "quarter_chi2": 62.828134976107364,
+  "quarter_p": 1.461555993182359e-13,
+  "significant_months_holm05": [
+   "Feb",
+   "Mar",
+   "Apr",
+   "Oct",
+   "Nov",
+   "Dec"
+  ],
+  "trend": {
+   "dec_vs_jan_rate_ratio": 0.7323196098952893,
+   "dispersion_used": 1.1818299444762985,
+   "p": 3.7191714459650855e-13,
+   "pearson_dispersion_estimated": 1.1818299444762985,
+   "se": 0.003898151649746126,
+   "slope_per_month": -0.02832165770672787
+  }
+ },
+ "ATP+WTA|played_southern_hemisphere": {
+  "Q1_over_Q4": 1.3393452898477465,
+  "chi2": 28.40476625612408,
+  "cramers_v": 0.046215336218200787,
+  "df": 11,
+  "n": 1209,
+  "p": 0.002805600781380068,
+  "quarter_chi2": 18.685134153637037,
+  "quarter_p": 0.0003175959859765261,
+  "significant_months_holm05": [
+   "Feb"
+  ],
+  "trend": {
+   "dec_vs_jan_rate_ratio": 0.689883162323247,
+   "dispersion_used": 1.130545124831541,
+   "p": 0.00014906208828072126,
+   "pearson_dispersion_estimated": 1.130545124831541,
+   "se": 0.008898438626798746,
+   "slope_per_month": -0.033748456881370736
+  }
+ },
+ "ATP|all": {
+  "Q1_over_Q4": 1.39821070038385,
+  "chi2": 143.93467898218532,
+  "cramers_v": 0.038225536023792146,
+  "df": 11,
+  "n": 8955,
+  "p": 2.575490739588918e-25,
+  "quarter_chi2": 134.27365431743698,
+  "quarter_p": 6.486059324461869e-29,
+  "significant_months_holm05": [
+   "Jan",
+   "Feb",
+   "Mar",
+   "Apr",
+   "Oct",
+   "Nov",
+   "Dec"
+  ],
+  "trend": {
+   "dec_vs_jan_rate_ratio": 0.6762910325426797,
+   "dispersion_used": 1.2088433586359102,
+   "p": 7.552549412741095e-26,
+   "pearson_dispersion_estimated": 1.2088433586359102,
+   "se": 0.0033823413202841144,
+   "slope_per_month": -0.035557434006739025
+  }
+ },
+ "ATP|elite_20plus": {
+  "Q1_over_Q4": 1.3309469525372624,
+  "chi2": 37.679676598629754,
+  "cramers_v": 0.04362354833834319,
+  "df": 11,
+  "n": 1800,
+  "p": 8.859459482105291e-05,
+  "quarter_chi2": 21.94143550628684,
+  "quarter_p": 6.708721579185422e-05,
+  "significant_months_holm05": [
+   "Feb",
+   "Nov",
+   "Dec"
+  ],
+  "trend": {
+   "dec_vs_jan_rate_ratio": 0.7200039266922084,
+   "dispersion_used": 1.862082558832976,
+   "p": 0.001406133663392308,
+   "pearson_dispersion_estimated": 1.862082558832976,
+   "se": 0.009351666813248954,
+   "slope_per_month": -0.02986351029524812
+  }
+ },
+ "ATP|elite_top100": {
+  "Q1_over_Q4": 1.247254358807235,
+  "chi2": 29.703654763941593,
+  "cramers_v": 0.0471822015297427,
+  "df": 11,
+  "n": 1213,
+  "p": 0.0017634865494025726,
+  "quarter_chi2": 12.904655006270428,
+  "quarter_p": 0.004847397482944961,
+  "significant_months_holm05": [
+   "Feb"
+  ],
+  "trend": {
+   "dec_vs_jan_rate_ratio": 0.7572294922534342,
+   "dispersion_used": 2.0091439496918104,
+   "p": 0.032499273313100915,
+   "pearson_dispersion_estimated": 2.0091439496918104,
+   "se": 0.011823323002290513,
+   "slope_per_month": -0.02528081011928928
+  }
+ },
+ "ATP|played": {
+  "Q1_over_Q4": 1.3256067349339462,
+  "chi2": 62.63109874026379,
+  "cramers_v": 0.03452760969216095,
+  "df": 11,
+  "n": 4776,
+  "p": 2.9975338681938426e-09,
+  "quarter_chi2": 48.75023799348442,
+  "quarter_p": 1.4743415542506258e-10,
+  "significant_months_holm05": [
+   "Feb",
+   "Apr",
+   "Nov",
+   "Dec"
+  ],
+  "trend": {
+   "dec_vs_jan_rate_ratio": 0.7169317050215342,
+   "dispersion_used": 1.1093192244584533,
+   "p": 8.697369251069132e-12,
+   "pearson_dispersion_estimated": 1.1093192244584533,
+   "se": 0.00443154910569111,
+   "slope_per_month": -0.030252244903197646
+  }
+ },
+ "ATP|played_born_1900-1969": {
+  "Q1_over_Q4": 1.114274191948909,
+  "chi2": 25.182625028575554,
+  "cramers_v": 0.0361999278008015,
+  "df": 11,
+  "n": 1747,
+  "p": 0.008571623755918738,
+  "quarter_chi2": 2.8445826237970993,
+  "quarter_p": 0.4162133103566098,
+  "significant_months_holm05": [
+   "Feb"
+  ],
+  "trend": {
+   "dec_vs_jan_rate_ratio": 0.886022061896655,
+   "dispersion_used": 2.198185340807458,
+   "p": 0.28493540483303215,
+   "pearson_dispersion_estimated": 2.198185340807458,
+   "se": 0.010288264436680685,
+   "slope_per_month": -0.011001220738773743
+  }
+ },
+ "ATP|played_born_1970-1979": {
+  "Q1_over_Q4": 1.4427440473487427,
+  "chi2": 26.92588982459479,
+  "cramers_v": 0.052151575728535474,
+  "df": 11,
+  "n": 900,
+  "p": 0.004715150367664911,
+  "quarter_chi2": 18.200597566626037,
+  "quarter_p": 0.00039987267004413385,
+  "significant_months_holm05": [],
+  "trend": {
+   "dec_vs_jan_rate_ratio": 0.6468314813621774,
+   "dispersion_used": 1.0,
+   "p": 4.555515703652369e-05,
+   "pearson_dispersion_estimated": 0.9776020566089413,
+   "se": 0.009713779295631352,
+   "slope_per_month": -0.03960631636185315
+  }
+ },
+ "ATP|played_born_1980-1989": {
+  "Q1_over_Q4": 1.5970452446906742,
+  "chi2": 33.30050434997656,
+  "cramers_v": 0.05690144004710068,
+  "df": 11,
+  "n": 935,
+  "p": 0.0004702842571894311,
+  "quarter_chi2": 24.439303621950664,
+  "quarter_p": 2.022304070299004e-05,
+  "significant_months_holm05": [
+   "Jan"
+  ],
+  "trend": {
+   "dec_vs_jan_rate_ratio": 0.5834947016270325,
+   "dispersion_used": 1.0,
+   "p": 2.9842419299988916e-07,
+   "pearson_dispersion_estimated": 0.6894119499010654,
+   "se": 0.009557052496357592,
+   "slope_per_month": -0.04897453705704179
+  }
+ },
+ "ATP|played_born_1990-2015": {
+  "Q1_over_Q4": 1.4016620498614958,
+  "chi2": 27.23550494646608,
+  "cramers_v": 0.045537502676671594,
+  "df": 11,
+  "n": 1194,
+  "p": 0.004233254003844722,
+  "quarter_chi2": 20.39307866119172,
+  "quarter_p": 0.00014069999616394714,
+  "significant_months_holm05": [],
+  "trend": {
+   "dec_vs_jan_rate_ratio": 0.6665029812041433,
+   "dispersion_used": 1.0,
+   "p": 1.2063432534326211e-05,
+   "pearson_dispersion_estimated": 0.883343466272442,
+   "se": 0.008427580930960686,
+   "slope_per_month": -0.03688278785899374
+  }
+ },
+ "ATP|played_incl_placeholders": {
+  "Q1_over_Q4": 1.351540350515799,
+  "chi2": 68.23011215144561,
+  "cramers_v": 0.03594021097248336,
+  "df": 11,
+  "n": 4802,
+  "p": 2.6471877631959334e-10,
+  "quarter_chi2": 55.440517243585155,
+  "quarter_p": 5.530063877861904e-12,
+  "significant_months_holm05": [
+   "Jan",
+   "Feb",
+   "Apr",
+   "Nov",
+   "Dec"
+  ],
+  "trend": {
+   "dec_vs_jan_rate_ratio": 0.6985206204927726,
+   "dispersion_used": 1.0,
+   "p": 7.888394140639926e-15,
+   "pearson_dispersion_estimated": 0.8021947218145936,
+   "se": 0.004198200007140562,
+   "slope_per_month": -0.03261732541950256
+  }
+ },
+ "ATP|played_northern_hemisphere": {
+  "Q1_over_Q4": 1.3561992789431925,
+  "chi2": 56.13765139871164,
+  "cramers_v": 0.036493710866175436,
+  "df": 11,
+  "n": 3832,
+  "p": 4.7940540123359924e-08,
+  "quarter_chi2": 46.0418255516047,
+  "quarter_p": 5.556532330394279e-10,
+  "significant_months_holm05": [
+   "Apr",
+   "Nov",
+   "Dec"
+  ],
+  "trend": {
+   "dec_vs_jan_rate_ratio": 0.7099291302490397,
+   "dispersion_used": 1.3060944871302191,
+   "p": 6.60978063536853e-09,
+   "pearson_dispersion_estimated": 1.3060944871302191,
+   "se": 0.0053692422157329365,
+   "slope_per_month": -0.031144557316311598
+  }
+ },
+ "ATP|played_southern_hemisphere": {
+  "Q1_over_Q4": 1.1709922579728673,
+  "chi2": 13.351863572383502,
+  "cramers_v": 0.03875867484035905,
+  "df": 11,
+  "n": 808,
+  "p": 0.2709511060325828,
+  "quarter_chi2": 4.849232679487602,
+  "quarter_p": 0.18317586549483106,
+  "significant_months_holm05": [],
+  "trend": {
+   "dec_vs_jan_rate_ratio": 0.7866097991035321,
+   "dispersion_used": 1.0,
+   "p": 0.032667205037229884,
+   "pearson_dispersion_estimated": 0.8610238683917263,
+   "se": 0.01021476543764645,
+   "slope_per_month": -0.021820269228977958
+  }
+ },
+ "WTA|all": {
+  "Q1_over_Q4": 1.3450424841089479,
+  "chi2": 275.7570177815786,
+  "cramers_v": 0.03535626977246417,
+  "df": 11,
+  "n": 20054,
+  "p": 1.1048537425009093e-52,
+  "quarter_chi2": 257.7137885411558,
+  "quarter_p": 1.4039325178334797e-55,
+  "significant_months_holm05": [
+   "Jan",
+   "Feb",
+   "Mar",
+   "Apr",
+   "Aug",
+   "Oct",
+   "Nov",
+   "Dec"
+  ],
+  "trend": {
+   "dec_vs_jan_rate_ratio": 0.6949665670387746,
+   "dispersion_used": 1.7943519397268664,
+   "p": 2.7867595286312554e-33,
+   "pearson_dispersion_estimated": 1.7943519397268664,
+   "se": 0.0027521470909297515,
+   "slope_per_month": -0.03308104905041882
+  }
+ },
+ "WTA|elite_20plus": {
+  "Q1_over_Q4": 1.3053734598463291,
+  "chi2": 18.682134462707058,
+  "cramers_v": 0.04108827548041375,
+  "df": 11,
+  "n": 1006,
+  "p": 0.06704344391824868,
+  "quarter_chi2": 9.61428790927436,
+  "quarter_p": 0.022146102001267085,
+  "significant_months_holm05": [],
+  "trend": {
+   "dec_vs_jan_rate_ratio": 0.746869857184039,
+   "dispersion_used": 1.0059954729194833,
+   "p": 0.0038822471129522557,
+   "pearson_dispersion_estimated": 1.0059954729194833,
+   "se": 0.00918872267670676,
+   "slope_per_month": -0.02653312087860557
+  }
+ },
+ "WTA|elite_top100": {
+  "Q1_over_Q4": 1.3184932074908355,
+  "chi2": 11.956640564373767,
+  "cramers_v": 0.03764528265842651,
+  "df": 11,
+  "n": 767,
+  "p": 0.36691123356676003,
+  "quarter_chi2": 7.5171739410362575,
+  "quarter_p": 0.05711881809403501,
+  "significant_months_holm05": [],
+  "trend": {
+   "dec_vs_jan_rate_ratio": 0.7574811481502284,
+   "dispersion_used": 1.0,
+   "p": 0.016076483693546174,
+   "pearson_dispersion_estimated": 0.6004036537939212,
+   "se": 0.01048972645267129,
+   "slope_per_month": -0.025250602621699016
+  }
+ },
+ "WTA|played": {
+  "Q1_over_Q4": 1.3096434708722142,
+  "chi2": 38.507329499018596,
+  "cramers_v": 0.032584861877329396,
+  "df": 11,
+  "n": 3297,
+  "p": 6.42151388492077e-05,
+  "quarter_chi2": 35.980155096742244,
+  "quarter_p": 7.561072206940892e-08,
+  "significant_months_holm05": [
+   "Feb"
+  ],
+  "trend": {
+   "dec_vs_jan_rate_ratio": 0.7198018926463768,
+   "dispersion_used": 1.0,
+   "p": 3.5781522941908255e-09,
+   "pearson_dispersion_estimated": 0.35202921749082206,
+   "se": 0.005063703916002212,
+   "slope_per_month": -0.02988902308497724
+  }
+ },
+ "WTA|played_born_1900-1969": {
+  "Q1_over_Q4": 0.9392137943913599,
+  "chi2": 13.65708550996325,
+  "cramers_v": 0.06288076949706421,
+  "df": 11,
+  "n": 314,
+  "p": 0.25255230573372695,
+  "quarter_chi2": 4.906238813747638,
+  "quarter_p": 0.17879296120177332,
+  "significant_months_holm05": [],
+  "trend": {
+   "dec_vs_jan_rate_ratio": 1.1546846045507233,
+   "dispersion_used": 1.340362190725341,
+   "p": 0.49044257996989815,
+   "pearson_dispersion_estimated": 1.340362190725341,
+   "se": 0.018960422406074925,
+   "slope_per_month": 0.013075203366399732
+  }
+ },
+ "WTA|played_born_1970-1979": {
+  "Q1_over_Q4": 1.2616220070760538,
+  "chi2": 20.500320576351417,
+  "cramers_v": 0.045429725060725,
+  "df": 11,
+  "n": 903,
+  "p": 0.03893318372948288,
+  "quarter_chi2": 11.069294482564555,
+  "quarter_p": 0.011357014906953344,
+  "significant_months_holm05": [],
+  "trend": {
+   "dec_vs_jan_rate_ratio": 0.730453198648146,
+   "dispersion_used": 1.1473378651380215,
+   "p": 0.005855308131899781,
+   "pearson_dispersion_estimated": 1.1473378651380215,
+   "se": 0.010361381711922284,
+   "slope_per_month": -0.02855364703661844
+  }
+ },
+ "WTA|played_born_1980-1989": {
+  "Q1_over_Q4": 1.4844581742982244,
+  "chi2": 31.402659672525978,
+  "cramers_v": 0.0520682148355444,
+  "df": 11,
+  "n": 1053,
+  "p": 0.0009504406914709544,
+  "quarter_chi2": 26.976715827466023,
+  "quarter_p": 5.9539003513487395e-06,
+  "significant_months_holm05": [],
+  "trend": {
+   "dec_vs_jan_rate_ratio": 0.6126260630540089,
+   "dispersion_used": 1.0,
+   "p": 7.294847788319417e-07,
+   "pearson_dispersion_estimated": 0.6866777663096325,
+   "se": 0.008993014594806597,
+   "slope_per_month": -0.044545503682698245
+  }
+ },
+ "WTA|played_born_1990-2015": {
+  "Q1_over_Q4": 1.3312589332017863,
+  "chi2": 13.3984167764395,
+  "cramers_v": 0.0344385753341933,
+  "df": 11,
+  "n": 1027,
+  "p": 0.26808431755259854,
+  "quarter_chi2": 10.442989487442805,
+  "quarter_p": 0.015152661499870535,
+  "significant_months_holm05": [],
+  "trend": {
+   "dec_vs_jan_rate_ratio": 0.724661301627173,
+   "dispersion_used": 1.0,
+   "p": 0.0012495778750349303,
+   "pearson_dispersion_estimated": 0.31030902928039994,
+   "se": 0.0090717374310804,
+   "slope_per_month": -0.029277354859532787
+  }
+ },
+ "WTA|played_incl_placeholders": {
+  "Q1_over_Q4": 1.329274101056594,
+  "chi2": 42.48731623918506,
+  "cramers_v": 0.034154954936058614,
+  "df": 11,
+  "n": 3311,
+  "p": 1.3334432095530576e-05,
+  "quarter_chi2": 40.09282268103154,
+  "quarter_p": 1.0183119404420204e-08,
+  "significant_months_holm05": [
+   "Jan"
+  ],
+  "trend": {
+   "dec_vs_jan_rate_ratio": 0.7053171301748794,
+   "dispersion_used": 1.0,
+   "p": 3.4190225201823045e-10,
+   "pearson_dispersion_estimated": 0.2784638245162474,
+   "se": 0.0050548979076715265,
+   "slope_per_month": -0.0317370679343435
+  }
+ },
+ "WTA|played_northern_hemisphere": {
+  "Q1_over_Q4": 1.2438893232049817,
+  "chi2": 23.95515692906836,
+  "cramers_v": 0.028197275748245047,
+  "df": 11,
+  "n": 2739,
+  "p": 0.012923589630545537,
+  "quarter_chi2": 19.41383546747717,
+  "quarter_p": 0.0002244853383466823,
+  "significant_months_holm05": [],
+  "trend": {
+   "dec_vs_jan_rate_ratio": 0.7647936698683307,
+   "dispersion_used": 1.0,
+   "p": 1.1222495308337839e-05,
+   "pearson_dispersion_estimated": 0.48366433637927075,
+   "se": 0.005550149497942057,
+   "slope_per_month": -0.024377199465909147
+  }
+ },
+ "WTA|played_southern_hemisphere": {
+  "Q1_over_Q4": 1.754900241943967,
+  "chi2": 28.071114890478622,
+  "cramers_v": 0.0797739877150143,
+  "df": 11,
+  "n": 401,
+  "p": 0.0031571217344531573,
+  "quarter_chi2": 20.25909215885742,
+  "quarter_p": 0.0001499964570722356,
+  "significant_months_holm05": [],
+  "trend": {
+   "dec_vs_jan_rate_ratio": 0.5283166858573977,
+   "dispersion_used": 1.2588855689364302,
+   "p": 0.0004141006993627817,
+   "pearson_dispersion_estimated": 1.2588855689364302,
+   "se": 0.0164277945667333,
+   "slope_per_month": -0.058005399204861155
+  }
+ }
+}

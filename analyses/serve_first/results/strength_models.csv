@@ -1,0 +1,25 @@
+gender,set_group,model,p_adj,lo,hi,n,n_clusters,covariates,coef_d_logrank,se_d_logrank,coef_d_spw_loo,se_d_spw_loo,coef_prev,se_prev
+All,set 1,raw,0.52722,0.51754,0.53687,10250,10250,(none),,,,,,
+All,set 1,pre-match rank,0.51370,0.50320,0.52419,10250,10250,d_logrank,0.47812,0.01340,,,,
+All,set 1,rank + in-match serve form (other sets),0.50963,0.49818,0.52106,10250,10250,d_logrank+d_spw_loo,0.22559,0.01500,6.44543,0.18527,,
+All,sets 2+,raw,0.45862,0.45168,0.46557,20370,10176,(none),,,,,,
+All,sets 2+,pre-match rank,0.47567,0.46818,0.48317,20370,10176,d_logrank,0.48627,0.01055,,,,
+All,sets 2+,rank + previous set result,0.50276,0.49484,0.51067,20332,10156,d_logrank+prev,0.42955,0.00999,,,0.41778,0.01707
+All,sets 2+,rank + in-match serve form (other sets),0.50020,0.49224,0.50816,20370,10176,d_logrank+d_spw_loo,0.26009,0.01014,7.35676,0.16531,,
+All,sets 2+,rank + previous set + in-match form,0.50069,0.49240,0.50897,20332,10156,d_logrank+prev+d_spw_loo,0.26061,0.01016,7.32834,0.16401,0.00523,0.01680
+Men,set 1,raw,0.53593,0.52246,0.54934,5288,5288,(none),,,,,,
+Men,set 1,pre-match rank,0.51539,0.50067,0.53008,5288,5288,d_logrank,0.49030,0.01851,,,,
+Men,set 1,rank + in-match serve form (other sets),0.51213,0.49647,0.52777,5288,5288,d_logrank+d_spw_loo,0.22765,0.02148,6.15622,0.28495,,
+Men,sets 2+,raw,0.44922,0.44077,0.45770,13922,5254,(none),,,,,,
+Men,sets 2+,pre-match rank,0.47150,0.46230,0.48071,13922,5254,d_logrank,0.50614,0.01318,,,,
+Men,sets 2+,rank + previous set result,0.50109,0.49124,0.51093,13897,5243,d_logrank+prev,0.45309,0.01248,,,0.38730,0.02105
+Men,sets 2+,rank + in-match serve form (other sets),0.49868,0.48898,0.50838,13922,5254,d_logrank+d_spw_loo,0.26404,0.01230,7.54962,0.20994,,
+Men,sets 2+,rank + previous set + in-match form,0.50178,0.49154,0.51202,13897,5243,d_logrank+prev+d_spw_loo,0.26458,0.01228,7.36159,0.20890,0.04408,0.02053
+Women,set 1,raw,0.51794,0.50402,0.53182,4962,4962,(none),,,,,,
+Women,set 1,pre-match rank,0.51162,0.49662,0.52659,4962,4962,d_logrank,0.46480,0.01944,,,,
+Women,set 1,rank + in-match serve form (other sets),0.50713,0.49032,0.52393,4962,4962,d_logrank+d_spw_loo,0.22915,0.02146,6.67052,0.24895,,
+Women,sets 2+,raw,0.47891,0.46678,0.49106,6448,4922,(none),,,,,,
+Women,sets 2+,pre-match rank,0.48556,0.47263,0.49851,6448,4922,d_logrank,0.44375,0.01759,,,,
+Women,sets 2+,rank + previous set result,0.50463,0.49125,0.51800,6435,4913,d_logrank+prev,0.38259,0.01680,,,0.47526,0.02942
+Women,sets 2+,rank + in-match serve form (other sets),0.50454,0.49058,0.51849,6448,4922,d_logrank+d_spw_loo,0.24659,0.01800,7.02617,0.26301,,
+Women,sets 2+,rank + previous set + in-match form,0.50199,0.48780,0.51618,6435,4913,d_logrank+prev+d_spw_loo,0.24673,0.01821,7.41839,0.25802,-0.08567,0.02910

@@ -1,0 +1,49 @@
+gender,set_group,estimator,p,lo,hi,n_sets,n_matches,years
+Men,set 1,truth (pbp),0.53706,0.52159,0.55246,4007,4007,all
+Men,set 1,A: posterior (all matches),0.54364,0.52818,0.55901,4007,4007,all
+Men,set 1,B: SvGms-identified only,0.64388,0.62347,0.66378,2165,2165,all
+Men,set 1,B*: B minus null selection bias,0.54938,,,2165,2165,all
+Men,sets 2+,truth (pbp),0.44029,0.43059,0.45004,10602,4007,all
+Men,sets 2+,A: posterior (all matches),0.44530,0.43683,0.45381,10602,4007,all
+Men,sets 2+,B: SvGms-identified only,0.46804,0.45502,0.48109,5741,2165,all
+Men,sets 2+,B*: B minus null selection bias,0.44050,,,5741,2165,all
+Men,all sets,truth (pbp),0.46684,0.45877,0.47492,14609,4007,all
+Men,all sets,A: posterior (all matches),0.47228,0.46527,0.47930,14609,4007,all
+Men,all sets,B: SvGms-identified only,0.51619,0.50596,0.52641,7906,2165,all
+Men,all sets,B*: B minus null selection bias,0.47022,,,7906,2165,all
+Women,set 1,truth (pbp),0.51407,0.49534,0.53276,2737,2737,all
+Women,set 1,A: posterior (all matches),0.54981,0.53111,0.56836,2737,2737,all
+Women,set 1,B: SvGms-identified only,0.68623,0.66026,0.71108,1278,1278,all
+Women,set 1,B*: B minus null selection bias,0.60872,,,1278,1278,all
+Women,sets 2+,truth (pbp),0.46363,0.44734,0.48000,3533,2737,all
+Women,sets 2+,A: posterior (all matches),0.47258,0.46049,0.48470,3533,2737,all
+Women,sets 2+,B: SvGms-identified only,0.50214,0.47862,0.52564,1639,1278,all
+Women,sets 2+,B*: B minus null selection bias,0.48338,,,1639,1278,all
+Women,all sets,truth (pbp),0.48565,0.47318,0.49813,6270,2737,all
+Women,all sets,A: posterior (all matches),0.50629,0.49719,0.51538,6270,2737,all
+Women,all sets,B: SvGms-identified only,0.58279,0.56628,0.59912,2917,1278,all
+Women,all sets,B*: B minus null selection bias,0.53806,,,2917,1278,all
+Men,set 1,truth (pbp),0.54053,0.51869,0.56221,2011,2011,"2011-15, 2024"
+Men,set 1,A: posterior (all matches),0.53305,0.51121,0.55478,2011,2011,"2011-15, 2024"
+Men,set 1,B: SvGms-identified only,0.61096,0.58174,0.63940,1095,1095,"2011-15, 2024"
+Men,set 1,B*: B minus null selection bias,0.52442,,,1095,1095,"2011-15, 2024"
+Men,sets 2+,truth (pbp),0.44455,0.43101,0.45817,5338,2011,"2011-15, 2024"
+Men,sets 2+,A: posterior (all matches),0.44743,0.43553,0.45939,5338,2011,"2011-15, 2024"
+Men,sets 2+,B: SvGms-identified only,0.47275,0.45478,0.49078,2917,1095,"2011-15, 2024"
+Men,sets 2+,B*: B minus null selection bias,0.44386,,,2917,1095,"2011-15, 2024"
+Men,all sets,truth (pbp),0.47081,0.45948,0.48217,7349,2011,"2011-15, 2024"
+Men,all sets,A: posterior (all matches),0.47086,0.46098,0.48077,7349,2011,"2011-15, 2024"
+Men,all sets,B: SvGms-identified only,0.51047,0.49611,0.52481,4012,1095,"2011-15, 2024"
+Men,all sets,B*: B minus null selection bias,0.46585,,,4012,1095,"2011-15, 2024"
+Women,set 1,truth (pbp),0.49887,0.45252,0.54524,443,443,"2011-15, 2024"
+Women,set 1,A: posterior (all matches),0.51452,0.46806,0.56074,443,443,"2011-15, 2024"
+Women,set 1,B: SvGms-identified only,0.61364,0.54787,0.67550,220,220,"2011-15, 2024"
+Women,set 1,B*: B minus null selection bias,0.54671,,,220,220,"2011-15, 2024"
+Women,sets 2+,truth (pbp),0.46632,0.42612,0.50696,579,443,"2011-15, 2024"
+Women,sets 2+,A: posterior (all matches),0.48056,0.45006,0.51122,579,443,"2011-15, 2024"
+Women,sets 2+,B: SvGms-identified only,0.52817,0.47061,0.58499,284,220,"2011-15, 2024"
+Women,sets 2+,B*: B minus null selection bias,0.47649,,,284,220,"2011-15, 2024"
+Women,all sets,truth (pbp),0.48043,0.44882,0.51220,1022,443,"2011-15, 2024"
+Women,all sets,A: posterior (all matches),0.49528,0.47165,0.51894,1022,443,"2011-15, 2024"
+Women,all sets,B: SvGms-identified only,0.56548,0.52335,0.60668,504,220,"2011-15, 2024"
+Women,all sets,B*: B minus null selection bias,0.50710,,,504,220,"2011-15, 2024"

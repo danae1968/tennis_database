@@ -1,0 +1,9 @@
+step,ATP,WTA
+rows in,12939,20662
+duplicate player ID,0,0
+missing birth date,3926,518
+unparseable / invalid birth date,0,0
+impossible birth year (outside 1900-2015),0,0
+same person under different ID (name + birthdate),4,1
+placeholder date (1st of month with excess day-1 births),54,89
+rows out,8955,20054

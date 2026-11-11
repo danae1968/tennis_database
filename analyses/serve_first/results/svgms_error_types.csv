@@ -1,0 +1,11 @@
+gender,error_type,n
+M,exact,3800
+M,"same total, one game moved between players",231
+M,tiebreaks counted as service games,626
+M,total too high (other),30
+M,total too low,443
+W,exact,2516
+W,"same total, one game moved between players",222
+W,tiebreaks counted as service games,331
+W,total too high (other),21
+W,total too low,317

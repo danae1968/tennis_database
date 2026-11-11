@@ -1,0 +1,252 @@
+{
+ "matches_total": 201085,
+ "matches_clean_score": 194686,
+ "matches_with_stats": 100008,
+ "svgms_eq_regular_games": 0.9836013118950484,
+ "svgms_eq_regular_games_tbmatches": 0.9708093038510947,
+ "svgms_eq_games_incl_tb_tbmatches": 0.01787520157432968,
+ "hyp_fit_counts": {
+  "exactly_one": 46526,
+  "both": 51717,
+  "neither (data error)": 1765
+ },
+ "bp_valid_true_hyp_feasible": 0.9986029316941065,
+ "bp_false_hyp_ruled_out": 0.2683230881657568,
+ "posterior_validation": {
+  "n": 46501,
+  "brier": 0.11892689861966305,
+  "accuracy": 0.8311995696611081,
+  "calib": [
+   {
+    "bin": "0.0-0.1",
+    "n": 3519,
+    "mean_pred": 0.03027911557358425,
+    "obs": 0.04461494742824666
+   },
+   {
+    "bin": "0.1-0.2",
+    "n": 2419,
+    "mean_pred": 0.15191685571391417,
+    "obs": 0.14468788755684167
+   },
+   {
+    "bin": "0.2-0.3",
+    "n": 3170,
+    "mean_pred": 0.25383299264223075,
+    "obs": 0.18990536277602524
+   },
+   {
+    "bin": "0.3-0.4",
+    "n": 3372,
+    "mean_pred": 0.34992684024493775,
+    "obs": 0.2873665480427046
+   },
+   {
+    "bin": "0.4-0.5",
+    "n": 4107,
+    "mean_pred": 0.4510566505340651,
+    "obs": 0.4110056001947894
+   },
+   {
+    "bin": "0.5-0.6",
+    "n": 3784,
+    "mean_pred": 0.5482514069946649,
+    "obs": 0.578752642706131
+   },
+   {
+    "bin": "0.6-0.7",
+    "n": 3689,
+    "mean_pred": 0.6510657988176205,
+    "obs": 0.6852805638384386
+   },
+   {
+    "bin": "0.7-0.8",
+    "n": 3542,
+    "mean_pred": 0.7515499697076711,
+    "obs": 0.8088650479954828
+   },
+   {
+    "bin": "0.8-0.9",
+    "n": 3964,
+    "mean_pred": 0.8486074740010462,
+    "obs": 0.8884964682139254
+   },
+   {
+    "bin": "0.9-1.0",
+    "n": 14918,
+    "mean_pred": 0.9859219253740504,
+    "obs": 0.985856012870358
+   }
+  ]
+ },
+ "posterior_validation_score_only_brier": 0.16134349808289072,
+ "n_hard1": 46526,
+ "n_hard2": 48045,
+ "n_post": 98243,
+ "markov_max_abs_diff_first_vs_second": 2.220446049250313e-16,
+ "null_simulation": [
+  {
+   "subset": "all sets",
+   "selection": "all",
+   "null_p": 0.4732950542197459,
+   "null_se": 0.0005092009546090644,
+   "n": 987832
+  },
+  {
+   "subset": "all sets",
+   "selection": "ident",
+   "null_p": 0.5392687297905767,
+   "null_se": 0.0006712431385148518,
+   "n": 470387
+  },
+  {
+   "subset": "set 1",
+   "selection": "all",
+   "null_p": 0.5000610730535509,
+   "null_se": 0.000797608456923316,
+   "n": 392972
+  },
+  {
+   "subset": "set 1",
+   "selection": "ident",
+   "null_p": 0.6082706031870173,
+   "null_se": 0.001137600655174393,
+   "n": 184122
+  },
+  {
+   "subset": "sets 2+",
+   "selection": "all",
+   "null_p": 0.45561308543186635,
+   "null_se": 0.000655631705796488,
+   "n": 594860
+  },
+  {
+   "subset": "sets 2+",
+   "selection": "ident",
+   "null_p": 0.49488760414301436,
+   "null_se": 0.0009302361623914263,
+   "n": 286265
+  },
+  {
+   "subset": "set 2",
+   "selection": "all",
+   "null_p": 0.4434947019126045,
+   "null_se": 0.0007924988097928896,
+   "n": 392972
+  },
+  {
+   "subset": "set 2",
+   "selection": "ident",
+   "null_p": 0.48486872834316375,
+   "null_se": 0.0011647142328874902,
+   "n": 184122
+  },
+  {
+   "subset": "set 3",
+   "selection": "all",
+   "null_p": 0.4765194567222573,
+   "null_se": 0.001242666482727044,
+   "n": 161538
+  },
+  {
+   "subset": "set 3",
+   "selection": "ident",
+   "null_p": 0.5142643111305325,
+   "null_se": 0.0017660102030299613,
+   "n": 80095
+  }
+ ]
+}
+                        label  n_sets  n_matches     est      lo      hi                 subset  markov_expected  excess
+0   A: posterior, all matches  253125      98243  0.4815  0.4799  0.4831               all sets           0.4727  0.0088
+1    B: SvGms-identified only  122206      46526  0.5441  0.5415  0.5467               all sets           0.5130  0.0311
+2   C: SvGms+break-identified  127124      48045  0.5522  0.5497  0.5547               all sets           0.5117  0.0405
+3   A: posterior, all matches   98243      98243  0.5080  0.5055  0.5105                  set 1           0.5071  0.0009
+4    B: SvGms-identified only   46526      46526  0.6132  0.6088  0.6176                  set 1           0.5914  0.0218
+5   C: SvGms+break-identified   48045      48045  0.6160  0.6116  0.6203                  set 1           0.5855  0.0305
+6   A: posterior, all matches  154882      98243  0.4647  0.4626  0.4667                sets 2+           0.4509  0.0138
+7    B: SvGms-identified only   75680      46526  0.5016  0.4981  0.5051                sets 2+           0.4648  0.0368
+8   C: SvGms+break-identified   79079      48045  0.5135  0.5100  0.5169                sets 2+           0.4668  0.0466
+9   A: posterior, all matches   98243      98243  0.4560  0.4536  0.4585                  set 2           0.4340  0.0221
+10   B: SvGms-identified only   46526      46526  0.4991  0.4945  0.5036                  set 2           0.4498  0.0492
+11  C: SvGms+break-identified   48045      48045  0.5136  0.5091  0.5181                  set 2           0.4514  0.0622
+12  A: posterior, all matches   45262      45262  0.4791  0.4753  0.4829                  set 3           0.4787  0.0004
+13   B: SvGms-identified only   22960      22960  0.5088  0.5023  0.5153                  set 3           0.4884  0.0204
+14  C: SvGms+break-identified   24479      24479  0.5173  0.5110  0.5235                  set 3           0.4908  0.0264
+15  A: posterior, all matches    8260       8260  0.4745  0.4651  0.4839                  set 4           0.4808 -0.0063
+16   B: SvGms-identified only    4491       4491  0.4865  0.4719  0.5011                  set 4           0.4866 -0.0000
+17  C: SvGms+break-identified    4758       4758  0.4897  0.4755  0.5039                  set 4           0.4867  0.0030
+18  A: posterior, all matches    3117       3117  0.5020  0.4866  0.5175                  set 5           0.4996  0.0024
+19   B: SvGms-identified only    1703       1703  0.5138  0.4901  0.5375                  set 5           0.4988  0.0150
+20  C: SvGms+break-identified    1797       1797  0.5209  0.4978  0.5440                  set 5           0.4999  0.0210
+21  A: posterior, all matches   31986      31986  0.4974  0.4929  0.5020           deciding set           0.5023 -0.0049
+22   B: SvGms-identified only   15901      15901  0.5298  0.5220  0.5375           deciding set           0.5109  0.0189
+23  C: SvGms+break-identified   17247      17247  0.5377  0.5302  0.5451           deciding set           0.5129  0.0248
+24  A: posterior, all matches  130481      50787  0.4810  0.4788  0.4832           surface=Hard           0.4730  0.0080
+25   B: SvGms-identified only   62906      24028  0.5467  0.5431  0.5503           surface=Hard           0.5152  0.0315
+26  C: SvGms+break-identified   65683      24888  0.5554  0.5519  0.5589           surface=Hard           0.5137  0.0417
+27  A: posterior, all matches   50787      50787  0.5097  0.5063  0.5132    surface=Hard, set 1           0.5103 -0.0005
+28   B: SvGms-identified only   24028      24028  0.6209  0.6147  0.6270    surface=Hard, set 1           0.5992  0.0216
+29  C: SvGms+break-identified   24888      24888  0.6233  0.6173  0.6293    surface=Hard, set 1           0.5925  0.0308
+30  A: posterior, all matches   80607      31853  0.4839  0.4812  0.4867           surface=Clay           0.4742  0.0097
+31   B: SvGms-identified only   38858      15104  0.5381  0.5335  0.5428           surface=Clay           0.5113  0.0269
+32  C: SvGms+break-identified   39960      15456  0.5444  0.5398  0.5490           surface=Clay           0.5104  0.0340
+33  A: posterior, all matches   31853      31853  0.5036  0.4993  0.5078    surface=Clay, set 1           0.5007  0.0029
+34   B: SvGms-identified only   15104      15104  0.5944  0.5866  0.6022    surface=Clay, set 1           0.5754  0.0191
+35  C: SvGms+break-identified   15456      15456  0.5975  0.5898  0.6052    surface=Clay, set 1           0.5715  0.0260
+36  A: posterior, all matches   28350       9879  0.4775  0.4727  0.4824          surface=Grass           0.4681  0.0094
+37   B: SvGms-identified only   14212       4804  0.5418  0.5343  0.5493          surface=Grass           0.5061  0.0357
+38  C: SvGms+break-identified   14932       5007  0.5510  0.5436  0.5583          surface=Grass           0.5047  0.0462
+39  A: posterior, all matches    9879       9879  0.5166  0.5086  0.5247   surface=Grass, set 1           0.5133  0.0033
+40   B: SvGms-identified only    4804       4804  0.6282  0.6146  0.6419   surface=Grass, set 1           0.5989  0.0293
+41  C: SvGms+break-identified    5007       5007  0.6309  0.6175  0.6443   surface=Grass, set 1           0.5916  0.0393
+42  A: posterior, all matches   13454       5654  0.4799  0.4731  0.4866         surface=Carpet           0.4699  0.0099
+43   B: SvGms-identified only    6134       2559  0.5605  0.5491  0.5719         surface=Carpet           0.5167  0.0438
+44  C: SvGms+break-identified    6444       2661  0.5706  0.5595  0.5817         surface=Carpet           0.5148  0.0558
+45  A: posterior, all matches    5654       5654  0.5021  0.4918  0.5124  surface=Carpet, set 1           0.5036 -0.0015
+46   B: SvGms-identified only    2559       2559  0.6225  0.6037  0.6413  surface=Carpet, set 1           0.5959  0.0266
+47  C: SvGms+break-identified    2661       2661  0.6257  0.6073  0.6441  surface=Carpet, set 1           0.5886  0.0371
+48  A: posterior, all matches  192569      81850  0.4830  0.4812  0.4847              best of 3           0.4738  0.0091
+49   B: SvGms-identified only   89726      37764  0.5541  0.5511  0.5571              best of 3           0.5183  0.0359
+50  C: SvGms+break-identified   93482      39016  0.5633  0.5604  0.5663              best of 3           0.5169  0.0465
+51  A: posterior, all matches   60556      16393  0.4768  0.4734  0.4802              best of 5           0.4691  0.0077
+52   B: SvGms-identified only   32480       8762  0.5163  0.5112  0.5215              best of 5           0.4984  0.0179
+53  C: SvGms+break-identified   33642       9029  0.5213  0.5163  0.5263              best of 5           0.4973  0.0240
+54  A: posterior, all matches   58150      15743  0.4765  0.4729  0.4800             Grand Slam           0.4686  0.0078
+55   B: SvGms-identified only   31267       8434  0.5160  0.5108  0.5212             Grand Slam           0.4976  0.0184
+56  C: SvGms+break-identified   32393       8693  0.5209  0.5158  0.5261             Grand Slam           0.4964  0.0245
+57  A: posterior, all matches   72812      28552  0.4801  0.4772  0.4830              1991-1999           0.4721  0.0080
+58   B: SvGms-identified only   34926      13458  0.5382  0.5334  0.5431              1991-1999           0.5103  0.0280
+59  C: SvGms+break-identified   36084      13815  0.5452  0.5404  0.5500              1991-1999           0.5092  0.0360
+60  A: posterior, all matches   70659      27309  0.4806  0.4776  0.4836              2000-2009           0.4707  0.0098
+61   B: SvGms-identified only   34171      12951  0.5415  0.5365  0.5464              2000-2009           0.5087  0.0328
+62  C: SvGms+break-identified   35501      13361  0.5494  0.5446  0.5543              2000-2009           0.5076  0.0418
+63  A: posterior, all matches   65568      25339  0.4843  0.4812  0.4875              2010-2019           0.4746  0.0097
+64   B: SvGms-identified only   31986      12114  0.5508  0.5458  0.5558              2010-2019           0.5173  0.0335
+65  C: SvGms+break-identified   33381      12542  0.5596  0.5547  0.5645              2010-2019           0.5159  0.0436
+66  A: posterior, all matches   43951      16985  0.4810  0.4772  0.4848              2020-2026           0.4739  0.0071
+67   B: SvGms-identified only   21078       7984  0.5479  0.5418  0.5541              2020-2026           0.5180  0.0299
+68  C: SvGms+break-identified   22104       8305  0.5569  0.5509  0.5629              2020-2026           0.5159  0.0410
+69  A: posterior, all matches   42379      35399  0.4913  0.4877  0.4949          tiebreak sets           0.4789  0.0123
+70   B: SvGms-identified only   17674      15693  0.4621  0.4545  0.4697          tiebreak sets           0.4336  0.0285
+71  C: SvGms+break-identified   17964      15970  0.4655  0.4580  0.4731          tiebreak sets           0.4349  0.0306
+72  A: posterior, all matches  210746      96351  0.4795  0.4777  0.4813            non-TB sets           0.4714  0.0081
+73   B: SvGms-identified only  104532      46526  0.5580  0.5551  0.5608            non-TB sets           0.5264  0.0315
+74  C: SvGms+break-identified  109160      48045  0.5665  0.5637  0.5693            non-TB sets           0.5243  0.0422
+     subset selection  null_p  null_se       n
+0  all sets       all  0.4733   0.0005  987832
+1  all sets     ident  0.5393   0.0007  470387
+2     set 1       all  0.5001   0.0008  392972
+3     set 1     ident  0.6083   0.0011  184122
+4   sets 2+       all  0.4556   0.0007  594860
+5   sets 2+     ident  0.4949   0.0009  286265
+6     set 2       all  0.4435   0.0008  392972
+7     set 2     ident  0.4849   0.0012  184122
+8     set 3       all  0.4765   0.0012  161538
+9     set 3     ident  0.5143   0.0018   80095
+     subset  obs_identified  null_identified  null_all  excess  excess_lo  excess_hi  corrected      lo      hi
+0  all sets          0.5441           0.5393    0.4733  0.0048     0.0018     0.0079     0.4781  0.4750  0.4812
+1     set 1          0.6132           0.6083    0.5001  0.0049    -0.0003     0.0101     0.5050  0.4998  0.5102
+2   sets 2+          0.5016           0.4949    0.4556  0.0067     0.0025     0.0109     0.4623  0.4581  0.4665
+3     set 2          0.4991           0.4849    0.4435  0.0142     0.0089     0.0195     0.4577  0.4524  0.4630
+4     set 3          0.5088           0.5143    0.4765 -0.0055    -0.0132     0.0023     0.4711  0.4633  0.4788

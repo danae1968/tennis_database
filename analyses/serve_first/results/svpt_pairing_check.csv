@@ -1,0 +1,5 @@
+era,svgms,n,svpt_exact,svpt_within3,svpt_swapped
+"2011-15, 2024",SvGms correct,2426,0.96579,0.99753,0.00000
+"2011-15, 2024",SvGms wrong,76,0.48684,0.76316,0.00000
+2016-23,SvGms correct,3890,0.98458,0.99846,0.00103
+2016-23,SvGms wrong,2145,0.96084,0.98089,0.00047

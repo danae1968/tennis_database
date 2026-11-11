@@ -1,0 +1,7 @@
+table,set_group,gender,p,lo,hi,n_sets,n_matches
+complete matches only,set 1,M,0.53589,0.52216,0.54956,5085,5085
+complete matches only,sets 2+,M,0.44762,0.43909,0.45618,13670,5092
+complete matches only,all sets,M,0.47155,0.46446,0.47866,18755,5092
+complete matches only,set 1,W,0.51745,0.50365,0.53122,5044,5044
+complete matches only,sets 2+,W,0.47961,0.46764,0.49161,6622,5047
+complete matches only,all sets,W,0.49597,0.48682,0.50513,11666,5049

@@ -1,0 +1,261 @@
+{
+  "raw": {
+    "set 1": {
+      "p": 0.5267343809888846,
+      "lo": 0.5171470984846351,
+      "hi": 0.5363019890518945,
+      "n_sets": 10436,
+      "n_matches": 10436
+    },
+    "sets 2+": {
+      "p": 0.45898931000971815,
+      "lo": 0.4520880121866287,
+      "hi": 0.46590637564071763,
+      "n_sets": 20580,
+      "n_matches": 10334
+    },
+    "all sets": {
+      "p": 0.4817835955635801,
+      "lo": 0.47622486853386536,
+      "hi": 0.4873468352532577,
+      "n_sets": 31016,
+      "n_matches": 10461
+    }
+  },
+  "raw_by_gender": {
+    "M": {
+      "set 1": {
+        "p": 0.535734489911371,
+        "lo": 0.5222905898239961,
+        "hi": 0.5491266558090068,
+        "n_sets": 5303,
+        "n_matches": 5303
+      },
+      "sets 2+": {
+        "p": 0.44922436081585754,
+        "lo": 0.44077462496963504,
+        "hi": 0.45770350310048713,
+        "n_sets": 13924,
+        "n_matches": 5255
+      }
+    },
+    "W": {
+      "set 1": {
+        "p": 0.5174361971556595,
+        "lo": 0.50375827290043,
+        "hi": 0.5310880429601912,
+        "n_sets": 5133,
+        "n_matches": 5133
+      },
+      "sets 2+": {
+        "p": 0.4794170673076923,
+        "lo": 0.4674763916448958,
+        "hi": 0.4913813069066089,
+        "n_sets": 6656,
+        "n_matches": 5079
+      }
+    }
+  },
+  "rank_adjusted": {
+    "set 1": {
+      "p_adj": 0.5137018656995295,
+      "lo": 0.5032026905005962,
+      "hi": 0.5241889625816026,
+      "n": 10250
+    },
+    "sets 2+": {
+      "p_adj": 0.4756734630497807,
+      "lo": 0.4681836547484434,
+      "hi": 0.4831742304772147,
+      "n": 20370
+    }
+  },
+  "rank_and_previous_set_adjusted_sets2plus": {
+    "p_adj": 0.5027561506648578,
+    "lo": 0.4948439187133458,
+    "hi": 0.5106670024596741,
+    "n": 20332
+  },
+  "coin_toss_share_fs_better_ranked": {
+    "n": 10275,
+    "lo": 0.5199749650853648,
+    "hi": 0.5392729572062464
+  },
+  "validation_accuracy": [
+    {
+      "gender": "Men",
+      "n_linked": 5302,
+      "n_with_stats": 5130,
+      "score_agrees": 0.9886939571150097,
+      "n_identified": 2165,
+      "n_ambiguous": 1842,
+      "n_neither": 1123,
+      "identified_accuracy": 0.9168591224018475,
+      "identified_wrong": 180,
+      "ambiguous_posterior_accuracy": 0.790303738317757,
+      "ambiguous_posterior_brier": 0.15006189023333621,
+      "ambiguous_truth_share_w_first": 0.4111895708853884,
+      "ambiguous_mean_posterior": 0.38586030415778516,
+      "years": "all"
+    },
+    {
+      "gender": "Women",
+      "n_linked": 4973,
+      "n_with_stats": 3407,
+      "score_agrees": 0.9920751394188435,
+      "n_identified": 1278,
+      "n_ambiguous": 1459,
+      "n_neither": 670,
+      "identified_accuracy": 0.8356807511737089,
+      "identified_wrong": 210,
+      "ambiguous_posterior_accuracy": 0.6811201445347786,
+      "ambiguous_posterior_brier": 0.20890710874663235,
+      "ambiguous_truth_share_w_first": 0.4126113776559287,
+      "ambiguous_mean_posterior": 0.40088695599341784,
+      "years": "all"
+    },
+    {
+      "gender": "All",
+      "n_linked": 10275,
+      "n_with_stats": 8537,
+      "score_agrees": 0.9900433407520206,
+      "n_identified": 3443,
+      "n_ambiguous": 3301,
+      "n_neither": 1793,
+      "identified_accuracy": 0.8867266918385129,
+      "identified_wrong": 390,
+      "ambiguous_posterior_accuracy": 0.7474281660163179,
+      "ambiguous_posterior_brier": 0.1760786095699723,
+      "ambiguous_truth_share_w_first": 0.4118181818181818,
+      "ambiguous_mean_posterior": 0.3925039056814785,
+      "years": "all"
+    },
+    {
+      "gender": "Men",
+      "n_linked": 2095,
+      "n_with_stats": 2025,
+      "score_agrees": 0.9837037037037037,
+      "n_identified": 1095,
+      "n_ambiguous": 916,
+      "n_neither": 14,
+      "identified_accuracy": 0.9972602739726028,
+      "identified_wrong": 3,
+      "ambiguous_posterior_accuracy": 0.7919621749408984,
+      "ambiguous_posterior_brier": 0.15141797012199104,
+      "ambiguous_truth_share_w_first": 0.4360655737704918,
+      "ambiguous_mean_posterior": 0.4169095362497976,
+      "years": "2011-15, 2024"
+    },
+    {
+      "gender": "Women",
+      "n_linked": 2013,
+      "n_with_stats": 477,
+      "score_agrees": 0.9958071278825996,
+      "n_identified": 220,
+      "n_ambiguous": 223,
+      "n_neither": 34,
+      "identified_accuracy": 0.990909090909091,
+      "identified_wrong": 2,
+      "ambiguous_posterior_accuracy": 0.6888888888888889,
+      "ambiguous_posterior_brier": 0.20011465195177325,
+      "ambiguous_truth_share_w_first": 0.40358744394618834,
+      "ambiguous_mean_posterior": 0.3729492697574207,
+      "years": "2011-15, 2024"
+    },
+    {
+      "gender": "All",
+      "n_linked": 4108,
+      "n_with_stats": 2502,
+      "score_agrees": 0.9860111910471623,
+      "n_identified": 1315,
+      "n_ambiguous": 1139,
+      "n_neither": 48,
+      "identified_accuracy": 0.9961977186311787,
+      "identified_wrong": 5,
+      "ambiguous_posterior_accuracy": 0.7738791423001949,
+      "ambiguous_posterior_brier": 0.16096046577053363,
+      "ambiguous_truth_share_w_first": 0.429701230228471,
+      "ambiguous_mean_posterior": 0.4082951782288837,
+      "years": "2011-15, 2024"
+    },
+    {
+      "gender": "Men",
+      "n_linked": 3207,
+      "n_with_stats": 3105,
+      "score_agrees": 0.9919484702093397,
+      "n_identified": 1070,
+      "n_ambiguous": 926,
+      "n_neither": 1109,
+      "identified_accuracy": 0.8345794392523365,
+      "identified_wrong": 177,
+      "ambiguous_posterior_accuracy": 0.7886836027713626,
+      "ambiguous_posterior_brier": 0.14872191928504339,
+      "ambiguous_truth_share_w_first": 0.38660907127429806,
+      "ambiguous_mean_posterior": 0.3551799074361962,
+      "years": "2016-23"
+    },
+    {
+      "gender": "Women",
+      "n_linked": 2960,
+      "n_with_stats": 2930,
+      "score_agrees": 0.9914675767918089,
+      "n_identified": 1058,
+      "n_ambiguous": 1236,
+      "n_neither": 636,
+      "identified_accuracy": 0.8034026465028355,
+      "identified_wrong": 208,
+      "ambiguous_posterior_accuracy": 0.6796116504854369,
+      "ambiguous_posterior_brier": 0.21049345006156245,
+      "ambiguous_truth_share_w_first": 0.41423948220064727,
+      "ambiguous_mean_posterior": 0.40592749323502575,
+      "years": "2016-23"
+    },
+    {
+      "gender": "All",
+      "n_linked": 6167,
+      "n_with_stats": 6035,
+      "score_agrees": 0.9917149958574979,
+      "n_identified": 2128,
+      "n_ambiguous": 2162,
+      "n_neither": 1745,
+      "identified_accuracy": 0.819078947368421,
+      "identified_wrong": 385,
+      "ambiguous_posterior_accuracy": 0.7322922476296709,
+      "ambiguous_posterior_brier": 0.1840362634292513,
+      "ambiguous_truth_share_w_first": 0.4024051803885291,
+      "ambiguous_mean_posterior": 0.38419194076059643,
+      "years": "2016-23"
+    }
+  ],
+  "data_quality": {
+    "rows_in": 1922136,
+    "placeholder_rows": 10598,
+    "non_placeholder_rows_bad_server_or_index": 640,
+    "matches_in_files": 10513,
+    "matches_with_points": 10508,
+    "matches_without_points": 5,
+    "matches_cumulative_game_numbering (Infosys AO/FO 2018-21)": 2019,
+    "sets_total": 31372,
+    "sets_usable": 31016,
+    "sets_excluded_by_reason": {
+      "set not completed (retirement/truncated/missing games)": 333,
+      "server changes inside a regular game": 13,
+      "first-server conflict": 10
+    },
+    "matches_incomplete (retired or truncated)": 366,
+    "games_with_server_change_outside_tiebreak": 100,
+    "regular_games_with_<4_points (missing points)": 135,
+    "sets_with_gaps_in_game_numbers": 9,
+    "sets_game1_missing_first_server_from_parity": 5,
+    "sets_with_parity_vote_conflicts": 50,
+    "sets_where_file_SetWinner_disagrees_with_counted_games": 11,
+    "cross_set_rule_agreement": 0.9996105539869535,
+    "cross_set_rule_n": 20542,
+    "within_set_rule_agreement (games whose server matches odd/even rule)": 0.999614155182794,
+    "pbp_matches_linked_to_tml": {
+      "linked": 10351,
+      "no candidate": 162
+    },
+    "linked_sets_with_imputed_rank": 66
+  }
+}

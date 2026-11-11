@@ -1,0 +1,7 @@
+cell,n,share_lost_prev,share_better_ranked,mean_d_logrank,p_win,lo,hi
+set 1: all,10436,,0.52964,0.15336,0.52673,,
+sets 2+: all,20542,0.63962,0.45259,-0.19395,0.45916,,
+sets 2+: previous set had even no. of games,10279,0.62710,0.44720,-0.19635,0.45880,,
+sets 2+: previous set had odd no. of games,10263,0.65215,0.45797,-0.19155,0.45951,,
+sets 2+: first server won previous set,7403,0.00000,0.62305,0.55022,0.64433,0.63299,0.65551
+sets 2+: first server lost previous set,13139,1.00000,0.35698,-0.61134,0.35482,0.34614,0.36360

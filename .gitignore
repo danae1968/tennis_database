@@ -28,3 +28,8 @@ Thumbs.db
 desktop.ini
 .vscode/
 .idea/
+
+# Private working notes and agent briefs (never pushed)
+CLAUDE.md
+CLAUDE.local.md
+/private/

@@ -1,0 +1,73 @@
+source,tour,metric,surface,per_decade,lo,hi,p,n,n_clusters
+TennisMyLife 2016-2025,WTA,ace_rate,All,0.100522,-0.191135,0.392180,0.496622,22713,135
+TennisMyLife 2016-2025,WTA,ace_rate,Hard,0.235111,-0.158377,0.628599,0.238502,14185,96
+TennisMyLife 2016-2025,WTA,ace_rate,Clay,-0.242194,-0.692031,0.207643,0.280960,5883,33
+TennisMyLife 2016-2025,WTA,ace_rate,Grass,0.109424,-0.570184,0.789032,0.727237,2645,11
+TennisMyLife 2016-2025,WTA,break_rate,All,-1.241248,-2.348070,-0.134426,0.028236,22713,135
+TennisMyLife 2016-2025,WTA,break_rate,Hard,-2.063832,-3.452965,-0.674700,0.004007,14185,96
+TennisMyLife 2016-2025,WTA,break_rate,Clay,0.476539,-1.400719,2.353797,0.608662,5883,33
+TennisMyLife 2016-2025,WTA,break_rate,Grass,-0.488923,-2.493641,1.515796,0.598750,2645,11
+TennisMyLife 2016-2025,WTA,bp_conversion,All,-0.551300,-1.299169,0.196569,0.147187,22713,135
+TennisMyLife 2016-2025,WTA,bp_conversion,Hard,-0.753138,-1.743225,0.236950,0.134328,14185,96
+TennisMyLife 2016-2025,WTA,bp_conversion,Clay,-0.023240,-1.404489,1.358009,0.972873,5883,33
+TennisMyLife 2016-2025,WTA,bp_conversion,Grass,-0.658198,-2.584751,1.268354,0.464090,2645,11
+TennisMyLife 2016-2025,ATP,ace_rate,All,-0.159050,-0.595790,0.277690,0.472150,24443,116
+TennisMyLife 2016-2025,ATP,ace_rate,Hard,0.213166,-0.468694,0.895026,0.535188,14204,74
+TennisMyLife 2016-2025,ATP,ace_rate,Clay,-0.634941,-1.075297,-0.194585,0.006054,7471,34
+TennisMyLife 2016-2025,ATP,ace_rate,Grass,-0.680768,-1.778962,0.417425,0.194361,2768,10
+TennisMyLife 2016-2025,ATP,break_rate,All,-0.987042,-1.697529,-0.276555,0.006888,24443,116
+TennisMyLife 2016-2025,ATP,break_rate,Hard,-1.792208,-2.817248,-0.767169,0.000837,14204,74
+TennisMyLife 2016-2025,ATP,break_rate,Clay,0.290957,-0.831842,1.413756,0.601571,7471,34
+TennisMyLife 2016-2025,ATP,break_rate,Grass,-0.388299,-1.789532,1.012934,0.546315,2768,10
+TennisMyLife 2016-2025,ATP,bp_conversion,All,-1.120467,-1.758429,-0.482505,0.000712,24425,116
+TennisMyLife 2016-2025,ATP,bp_conversion,Hard,-1.518530,-2.413992,-0.623067,0.001168,14191,74
+TennisMyLife 2016-2025,ATP,bp_conversion,Clay,-0.242937,-1.314130,0.828256,0.647531,7469,34
+TennisMyLife 2016-2025,ATP,bp_conversion,Grass,-1.705849,-3.423700,0.012003,0.051308,2765,10
+TennisMyLife 2016-2025,Challenger,ace_rate,All,-0.324485,-0.644745,-0.004225,0.047067,44721,423
+TennisMyLife 2016-2025,Challenger,ace_rate,Hard,-0.304830,-0.848325,0.238666,0.270235,22143,225
+TennisMyLife 2016-2025,Challenger,ace_rate,Clay,-0.361851,-0.718792,-0.004910,0.046958,21641,212
+TennisMyLife 2016-2025,Challenger,ace_rate,Grass,0.012085,-1.113694,1.137864,0.980457,877,8
+TennisMyLife 2016-2025,Challenger,break_rate,All,0.546368,-0.216791,1.309527,0.160095,44721,423
+TennisMyLife 2016-2025,Challenger,break_rate,Hard,0.534390,-0.569252,1.638032,0.341020,22143,225
+TennisMyLife 2016-2025,Challenger,break_rate,Clay,0.506485,-0.621625,1.634594,0.377144,21641,212
+TennisMyLife 2016-2025,Challenger,break_rate,Grass,1.574340,-0.530485,3.679166,0.120271,877,8
+TennisMyLife 2016-2025,Challenger,bp_conversion,All,-0.059725,-0.604689,0.485240,0.829546,44714,423
+TennisMyLife 2016-2025,Challenger,bp_conversion,Hard,-0.097509,-0.907636,0.712618,0.812728,22138,225
+TennisMyLife 2016-2025,Challenger,bp_conversion,Clay,-0.125364,-0.885112,0.634385,0.745297,21641,212
+TennisMyLife 2016-2025,Challenger,bp_conversion,Grass,2.667119,-2.145744,7.479981,0.231420,877,8
+"TennisMyLife 2016-2025, tournament fixed effects",WTA,ace_rate,All,0.133654,-0.188617,0.455925,0.413527,22713,135
+"TennisMyLife 2016-2025, tournament fixed effects",WTA,ace_rate,Hard,0.496189,0.062271,0.930107,0.025459,14185,96
+"TennisMyLife 2016-2025, tournament fixed effects",WTA,ace_rate,Clay,-0.366332,-0.787634,0.054971,0.086060,5883,33
+"TennisMyLife 2016-2025, tournament fixed effects",WTA,ace_rate,Grass,-0.165221,-0.774918,0.444476,0.559424,2645,11
+"TennisMyLife 2016-2025, tournament fixed effects",WTA,break_rate,All,-1.312807,-2.555140,-0.070475,0.038506,22713,135
+"TennisMyLife 2016-2025, tournament fixed effects",WTA,break_rate,Hard,-2.988000,-4.465382,-1.510618,0.000119,14185,96
+"TennisMyLife 2016-2025, tournament fixed effects",WTA,break_rate,Clay,1.153433,-0.697107,3.003973,0.213379,5883,33
+"TennisMyLife 2016-2025, tournament fixed effects",WTA,break_rate,Grass,0.160597,-1.309803,1.630998,0.812648,2645,11
+"TennisMyLife 2016-2025, tournament fixed effects",WTA,bp_conversion,All,-0.684985,-1.533530,0.163561,0.112712,22713,135
+"TennisMyLife 2016-2025, tournament fixed effects",WTA,bp_conversion,Hard,-1.395397,-2.567370,-0.223425,0.020129,14185,96
+"TennisMyLife 2016-2025, tournament fixed effects",WTA,bp_conversion,Clay,0.243481,-1.248764,1.735726,0.741789,5883,33
+"TennisMyLife 2016-2025, tournament fixed effects",WTA,bp_conversion,Grass,-0.585966,-3.017782,1.845851,0.603084,2645,11
+"TennisMyLife 2016-2025, tournament fixed effects",ATP,ace_rate,All,-0.305769,-0.759706,0.148168,0.184755,24443,116
+"TennisMyLife 2016-2025, tournament fixed effects",ATP,ace_rate,Hard,-0.060704,-0.797756,0.676348,0.870071,14204,74
+"TennisMyLife 2016-2025, tournament fixed effects",ATP,ace_rate,Clay,-0.621499,-0.910037,-0.332961,0.000112,7471,34
+"TennisMyLife 2016-2025, tournament fixed effects",ATP,ace_rate,Grass,-0.621380,-1.772700,0.529939,0.253139,2768,10
+"TennisMyLife 2016-2025, tournament fixed effects",ATP,break_rate,All,-0.694031,-1.415404,0.027343,0.059182,24443,116
+"TennisMyLife 2016-2025, tournament fixed effects",ATP,break_rate,Hard,-1.283337,-2.349336,-0.217339,0.018978,14204,74
+"TennisMyLife 2016-2025, tournament fixed effects",ATP,break_rate,Clay,0.286002,-0.583354,1.155358,0.507949,7471,34
+"TennisMyLife 2016-2025, tournament fixed effects",ATP,break_rate,Grass,-0.527846,-2.079166,1.023473,0.461193,2768,10
+"TennisMyLife 2016-2025, tournament fixed effects",ATP,bp_conversion,All,-0.933820,-1.591077,-0.276563,0.005752,24425,116
+"TennisMyLife 2016-2025, tournament fixed effects",ATP,bp_conversion,Hard,-1.314500,-2.247901,-0.381098,0.006414,14191,74
+"TennisMyLife 2016-2025, tournament fixed effects",ATP,bp_conversion,Clay,-0.068571,-1.073865,0.936723,0.890472,7469,34
+"TennisMyLife 2016-2025, tournament fixed effects",ATP,bp_conversion,Grass,-1.786511,-3.612549,0.039527,0.054163,2765,10
+"TennisMyLife 2016-2025, tournament fixed effects",Challenger,ace_rate,All,0.226987,-0.065789,0.519763,0.128279,44749,423
+"TennisMyLife 2016-2025, tournament fixed effects",Challenger,ace_rate,Hard,0.344262,-0.099652,0.788175,0.127864,22143,225
+"TennisMyLife 2016-2025, tournament fixed effects",Challenger,ace_rate,Clay,-0.129077,-0.456883,0.198729,0.438496,21641,212
+"TennisMyLife 2016-2025, tournament fixed effects",Challenger,ace_rate,Grass,0.665936,0.085483,1.246390,0.030074,877,8
+"TennisMyLife 2016-2025, tournament fixed effects",Challenger,break_rate,All,-0.334268,-1.097095,0.428559,0.389551,44749,423
+"TennisMyLife 2016-2025, tournament fixed effects",Challenger,break_rate,Hard,-0.436667,-1.401335,0.528001,0.373341,22143,225
+"TennisMyLife 2016-2025, tournament fixed effects",Challenger,break_rate,Clay,0.059347,-1.121367,1.240061,0.921166,21641,212
+"TennisMyLife 2016-2025, tournament fixed effects",Challenger,break_rate,Grass,0.375614,-0.358066,1.109294,0.265337,877,8
+"TennisMyLife 2016-2025, tournament fixed effects",Challenger,bp_conversion,All,-0.250374,-0.895371,0.394623,0.445886,44742,423
+"TennisMyLife 2016-2025, tournament fixed effects",Challenger,bp_conversion,Hard,-0.180301,-1.148514,0.787913,0.713990,22138,225
+"TennisMyLife 2016-2025, tournament fixed effects",Challenger,bp_conversion,Clay,-0.323753,-1.227349,0.579843,0.480784,21641,212
+"TennisMyLife 2016-2025, tournament fixed effects",Challenger,bp_conversion,Grass,1.600361,-3.422486,6.623207,0.475776,877,8

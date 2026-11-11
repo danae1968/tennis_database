@@ -1,0 +1,19 @@
+source,gender,metric,surface,per_decade,lo,hi,p,n,n_clusters
+"Slam pbp, US Open + Wimbledon only",W,winners_ex_rate,All,-1.916362,-3.105533,-0.727192,0.003685,1909,16
+"Slam pbp, US Open + Wimbledon only",W,winners_ex_rate,Hard,-1.758165,-3.526515,0.010186,0.051048,1020,9
+"Slam pbp, US Open + Wimbledon only",W,winners_ex_rate,Grass,-2.101737,-4.168338,-0.035136,0.047257,889,7
+"Slam pbp, US Open + Wimbledon only",W,ue_rate,All,3.653356,-0.017665,7.324378,0.050978,1909,16
+"Slam pbp, US Open + Wimbledon only",W,ue_rate,Hard,-0.615572,-4.107375,2.876231,0.695014,1020,9
+"Slam pbp, US Open + Wimbledon only",W,ue_rate,Grass,8.655679,5.074705,12.236653,0.001040,889,7
+"Slam pbp, US Open + Wimbledon only",W,ace_rate,All,0.369932,-0.272732,1.012597,0.238766,1909,16
+"Slam pbp, US Open + Wimbledon only",W,ace_rate,Hard,0.486302,-0.740040,1.712643,0.387217,1020,9
+"Slam pbp, US Open + Wimbledon only",W,ace_rate,Grass,0.233571,-0.391148,0.858290,0.395545,889,7
+"Slam pbp, US Open + Wimbledon only",M,winners_ex_rate,All,-1.070689,-2.034507,-0.106870,0.031623,2015,17
+"Slam pbp, US Open + Wimbledon only",M,winners_ex_rate,Hard,-1.620883,-2.948823,-0.292943,0.022678,1005,9
+"Slam pbp, US Open + Wimbledon only",M,winners_ex_rate,Grass,-0.646556,-2.229744,0.936633,0.366371,1010,8
+"Slam pbp, US Open + Wimbledon only",M,ue_rate,All,3.828443,1.307214,6.349673,0.005359,2015,17
+"Slam pbp, US Open + Wimbledon only",M,ue_rate,Hard,-0.221294,-3.370116,2.927528,0.875275,1005,9
+"Slam pbp, US Open + Wimbledon only",M,ue_rate,Grass,6.950299,4.089135,9.811463,0.000703,1010,8
+"Slam pbp, US Open + Wimbledon only",M,ace_rate,All,-0.283421,-1.308022,0.741180,0.565789,2015,17
+"Slam pbp, US Open + Wimbledon only",M,ace_rate,Hard,0.638893,-0.555427,1.833213,0.252371,1005,9
+"Slam pbp, US Open + Wimbledon only",M,ace_rate,Grass,-0.994413,-2.803601,0.814776,0.234863,1010,8

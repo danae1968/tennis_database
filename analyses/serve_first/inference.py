@@ -13,56 +13,26 @@ Match-level TML data has no serve order.  The earlier analysis inferred it as fo
 3. Estimator B: identified matches only (selection-biased).
 4. Estimator B*: B corrected by a null simulation of the same identification selection.
 
-The functions below are copied from that script with type hints and a seeded RNG argument; the
-logic is unchanged.
+Score parsing and the serve plan now live in :mod:`tennis.scores`; the remaining functions are
+copied from that script with type hints and a seeded RNG argument; the logic is unchanged.
 """
 from __future__ import annotations
 
-import re
 from functools import lru_cache
 
 import numpy as np
 
-SET_RE = re.compile(r"^(\d+)-(\d+)(?:\((\d+)\))?$")
+from tennis.scores import parse_score as _parse_score
+from tennis.scores import serve_plan  # noqa: F401  (re-exported; used by validation)
+
 SetScore = tuple[int, int, bool]
 
 
 def parse_score(s: object) -> list[SetScore] | None:
     """TML score string -> list of (winner games, loser games, is_tiebreak) or None if not a clean
-    completed match (retirements, walkovers, match tiebreaks and malformed sets give None)."""
-    if not isinstance(s, str):
-        return None
-    out = []
-    for t in s.split():
-        m = SET_RE.match(t)
-        if not m:
-            return None
-        a, b = int(m[1]), int(m[2])
-        hi, lo = max(a, b), min(a, b)
-        if hi - lo == 1 and lo >= 6:
-            tb = True
-        elif hi >= 6 and hi - lo >= 2 and (hi == 6 or hi - lo == 2):
-            tb = False
-        else:
-            return None
-        out.append((a, b, tb))
-    if not out or out[-1][0] < out[-1][1]:
-        return None
-    return out
-
-
-def serve_plan(sets: list[SetScore], first_is_w: bool) -> list[tuple[bool, int, int]]:
-    """Per set: (winner serves first, regular games served by W, by L). TB = one game for alternation."""
-    w_first = first_is_w
-    plan = []
-    for a, b, tb in sets:
-        n_reg = a + b - (1 if tb else 0)
-        n_first, n_second = (n_reg + 1) // 2, n_reg // 2
-        sw, sl = (n_first, n_second) if w_first else (n_second, n_first)
-        plan.append((w_first, sw, sl))
-        if (a + b) % 2 == 1:
-            w_first = not w_first
-    return plan
+    completed match.  Thin wrapper around :func:`tennis.scores.parse_score` (match tiebreaks rejected)."""
+    sets = _parse_score(s, allow_match_tiebreak=False)
+    return None if sets is None else [(x.w, x.l, x.tiebreak) for x in sets]
 
 
 def svgms_fit(sets: list[SetScore], w_svgms: float, l_svgms: float) -> tuple[bool, bool]:

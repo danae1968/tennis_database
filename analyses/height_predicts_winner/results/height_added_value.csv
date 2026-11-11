@@ -1,0 +1,3 @@
+tour,d_logloss,d_logloss_lo,d_logloss_hi,d_logloss_share_le0,d_auc,d_auc_lo,d_auc_hi,d_auc_share_le0,d_accuracy,d_accuracy_lo,d_accuracy_hi,d_accuracy_share_le0,wald_p_height_train,or_per_10cm_given_rank
+WTA,0.001163,0.000128,0.002181,0.014000,0.001797,0.000040,0.003544,0.021000,-0.000164,-0.004923,0.004599,0.574000,0.000001,1.113879
+ATP,0.001004,0.000337,0.001656,0.002000,0.001671,0.000639,0.002748,0.000000,-0.000577,-0.003657,0.002310,0.652000,0.000002,1.085354

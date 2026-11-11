@@ -1,0 +1,5 @@
+tour,heights_available,n,ranking_only_accuracy,median_better_rank
+WTA,False,3638,0.652007,49.000000
+WTA,True,6094,0.630456,26.000000
+ATP,False,14,0.928571,72.000000
+ATP,True,10391,0.639881,30.000000

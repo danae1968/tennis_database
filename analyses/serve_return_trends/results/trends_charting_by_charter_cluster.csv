@@ -1,0 +1,5 @@
+gender,sample,per_decade,lo,hi,p,n,n_clusters
+W,all,-0.825632,-2.436994,0.785731,0.309420,2881,60
+W,without the most prolific charter,-0.825632,-2.436994,0.785731,0.309420,2881,60
+M,all,5.125312,-3.356563,13.607187,0.233301,4438,97
+M,without the most prolific charter,0.066424,-1.661758,1.794606,0.939337,3589,96

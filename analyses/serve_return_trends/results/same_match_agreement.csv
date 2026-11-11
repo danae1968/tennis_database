@@ -1,0 +1,5 @@
+quantity,charting_total,pbp_total,correlation,n_matches
+points,210242,210875,0.992486,1102
+winners_ex,51501,53473,0.943973,1102
+aces,15227,15164,0.995112,1102
+ue,75133,67405,0.887592,1102

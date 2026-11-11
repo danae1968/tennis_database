@@ -1,0 +1,19 @@
+tour,model,n,or_per_10cm,lo,hi,p,share_of_height_effect_accounted,coef_log_rank_ratio,coef_ace_diff,coef_spw_diff,coef_rpw_diff,share_lo,share_hi
+WTA,ranking + height,14453,1.142917,1.094780,1.193171,0.000000,0.000000,0.462408,,,,,
+WTA,+ ace rate (prev. season),14453,1.055393,1.006863,1.106262,0.024783,0.596411,0.441164,0.044461,,,,
+WTA,+ serve points won (prev. season),14453,1.072523,1.025766,1.121412,0.002080,0.475879,0.392672,,0.050934,,,
+WTA,+ return points won (prev. season; placebo),14453,1.165418,1.113731,1.219503,0.000000,-0.145943,0.446637,,,0.020504,,
+WTA,+ serve and return points won,14453,1.098119,1.048890,1.149659,0.000063,0.299326,0.348225,,0.061740,0.038985,,
+WTA,bootstrap CI of share accounted (ace),14453,,,,,,,,,,0.376530,0.894242
+WTA,bootstrap CI of share accounted (spw),14453,,,,,,,,,,0.311328,0.732758
+WTA,bootstrap CI of share accounted (rpw),14453,,,,,,,,,,-0.262361,-0.070081
+WTA,"corr(height diff, ace diff)",14453,0.525863,,,,,,,,,,
+ATP,ranking + height,19742,1.100741,1.067219,1.135315,0.000000,0.000000,0.521499,,,,,
+ATP,+ ace rate (prev. season),19742,1.093674,1.048340,1.140968,0.000034,0.067099,0.521254,0.001695,,,,
+ATP,+ serve points won (prev. season),19742,1.030300,0.992786,1.069231,0.114701,0.689008,0.481261,,0.033081,,,
+ATP,+ return points won (prev. season; placebo),19742,1.172905,1.132661,1.214580,0.000000,-0.661579,0.477138,,,0.035872,,
+ATP,+ serve and return points won,19742,1.091861,1.051324,1.133961,0.000005,0.084390,0.379593,,0.056497,0.059398,,
+ATP,bootstrap CI of share accounted (ace),19742,,,,,,,,,,-0.265700,0.414931
+ATP,bootstrap CI of share accounted (spw),19742,,,,,,,,,,0.426883,0.972812
+ATP,bootstrap CI of share accounted (rpw),19742,,,,,,,,,,-1.099199,-0.399610
+ATP,"corr(height diff, ace diff)",19742,0.702664,,,,,,,,,,

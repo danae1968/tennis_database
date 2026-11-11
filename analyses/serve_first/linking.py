@@ -11,47 +11,17 @@ matches {player1, player2}; it is left unlinked when there is no unique such row
 """
 from __future__ import annotations
 
-import re
-import unicodedata
-from functools import lru_cache
-
 import numpy as np
 import pandas as pd
 
 from tennis.load import tml_path
+from tennis.names import names_match, normalize_name  # noqa: F401  (re-exported)
 from tennis.paths import SLAM_NAMES
 
 TML_COLS = ["tourney_name", "tourney_date", "match_num", "winner_name", "loser_name", "winner_rank",
             "loser_rank", "winner_rank_points", "loser_rank_points", "score", "best_of", "round",
             "w_svpt", "w_1stWon", "w_2ndWon", "w_SvGms", "w_bpSaved", "w_bpFaced",
             "l_svpt", "l_1stWon", "l_2ndWon", "l_SvGms", "l_bpSaved", "l_bpFaced"]
-
-
-@lru_cache(maxsize=None)
-def normalize_name(name: str) -> tuple[str, ...]:
-    """Lower-case ASCII tokens; hyphens, dots and apostrophes become separators."""
-    s = unicodedata.normalize("NFKD", str(name)).encode("ascii", "ignore").decode()
-    s = re.sub(r"[-.'`,]", " ", s.lower())
-    return tuple(t for t in s.split() if t)
-
-
-def names_match(pbp_name: str, tml_name: str) -> bool:
-    """Whether a pbp-style player name refers to the TML full name (see module docstring)."""
-    p, t = normalize_name(pbp_name), normalize_name(tml_name)
-    if not p or not t:
-        return False
-    if p == t:
-        return True
-    initials = []
-    rest = list(p)
-    while len(rest) > 1 and len(rest[0]) == 1:
-        initials.append(rest.pop(0))
-    if initials:
-        n = len(rest)
-        return len(t) > n and tuple(t[-n:]) == tuple(rest) and t[0][0] == initials[0]
-    # full-name style but not identical (e.g. a middle name or compound surname): same first
-    # initial and the pbp surname is the TML surname's last token, or vice versa
-    return p[0][0] == t[0][0] and (p[-1] == t[-1]) and (p[0] == t[0] or len(p) != len(t))
 
 
 def load_tml_slams(years: list[int]) -> pd.DataFrame:

@@ -64,3 +64,43 @@ def test_logit_cluster_recovers_level_probability():
     r = logit_cluster(d, "y", ["x"], "c")
     assert r["lo"] < expit(0.2) < r["hi"]
     assert r["coef_x"] == pytest.approx(1.0, abs=0.15) and r["n_clusters"] == n // 2
+
+
+def test_ratio_ci_matches_simple_cases():
+    from tennis.stats import ratio_ci
+    r = ratio_ci(np.array([1, 2, 3]), np.array([10, 10, 10]))
+    assert r["rate"] == pytest.approx(0.2) and r["lo"] < 0.2 < r["hi"] and r["n_clusters"] == 3
+    # duplicating rows within clusters leaves the clustered SE equal to the unduplicated one
+    r2 = ratio_ci(np.repeat([1, 2, 3], 2), np.repeat([10, 10, 10], 2), cluster=np.repeat([0, 1, 2], 2))
+    assert r2["rate"] == pytest.approx(0.2) and r2["se"] == pytest.approx(r["se"])
+    assert np.isnan(ratio_ci(np.array([]), np.array([]))["rate"])
+
+
+def test_trend_per_decade_recovers_slope():
+    from tennis.stats import trend_per_decade
+    rng = np.random.default_rng(3)
+    yrs = np.repeat(np.arange(2016, 2026), 50)
+    d = pd.DataFrame({"year": yrs, "y": 0.05 + 0.002 * (yrs - 2016) + rng.normal(0, 0.01, len(yrs)),
+                      "w": rng.integers(50, 150, len(yrs)), "c": yrs})
+    r = trend_per_decade(d, "y", weight="w", cluster="c", scale=100)
+    assert r["per_decade"] == pytest.approx(2.0, abs=0.3) and r["lo"] < 2.0 < r["hi"] and r["n_clusters"] == 10
+
+
+def test_trend_per_decade_handles_missing_controls():
+    from tennis.stats import trend_per_decade
+    rng = np.random.default_rng(4)
+    yrs = np.repeat(np.arange(2016, 2026), 30)
+    d = pd.DataFrame({"year": yrs, "y": rng.normal(0, 1, len(yrs)), "c": yrs,
+                      "s": np.where(rng.random(len(yrs)) < 0.1, None, rng.choice(["Hard", "Clay"], len(yrs)))})
+    r = trend_per_decade(d, "y", cluster="c", controls="C(s)")
+    assert r["n"] == int(d["s"].notna().sum()) and r["n_clusters"] == 10
+
+
+def test_auc_and_log_loss():
+    from tennis.stats import auc, log_loss
+    assert auc([0, 0, 1, 1], [0.1, 0.2, 0.8, 0.9]) == 1.0
+    assert auc([0, 1], [0.5, 0.5]) == 0.5
+    assert auc([1, 0, 1, 0], [0.9, 0.8, 0.3, 0.1]) == 0.75
+    assert np.isnan(auc([1, 1], [0.2, 0.3]))
+    assert log_loss([1, 0], [0.5, 0.5]) == pytest.approx(np.log(2))
+    assert log_loss([1], [1.0]) < 1e-9

@@ -1,0 +1,5 @@
+tour,test,model,accuracy,auc,log_loss,n
+WTA,2025 only (92% height coverage),Coin flip,0.500000,0.500000,0.693147,2228
+WTA,2025 only (92% height coverage),Height only,0.536580,0.556262,0.688708,2228
+WTA,2025 only (92% height coverage),Ranking only,0.611311,0.676081,0.642300,2228
+WTA,2025 only (92% height coverage),Ranking + height,0.619838,0.679815,0.640464,2228

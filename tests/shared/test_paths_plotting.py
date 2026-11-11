@@ -42,3 +42,16 @@ def test_save_figure_is_reproducible_and_closes(tmp_path):
 
 def test_wrap():
     assert max(len(line) for line in plotting.wrap("word " * 40, 30).splitlines()) <= 30
+
+
+def test_reader_helpers(tmp_path):
+    fig, ax = plotting.new_figure(figsize=(3, 2))
+    ax.plot([0, 1], [0.4, 0.6])
+    plotting.faint_band(ax, [0, 1], [0.35, 0.55], [0.45, 0.65], plotting.WOMEN)
+    t = plotting.label_hline(ax, 0.5, "coin flip")
+    plotting.label_vline(ax, 0.5, "rule change")
+    plotting.percent_axis(ax)
+    plotting.light_grid(ax)
+    assert t.get_text() == "coin flip" and ax.collections[0].get_alpha() <= 0.15
+    assert ax.yaxis.get_major_formatter().format_pct(0.5, 1) .startswith("50")
+    plotting.save_figure(fig, tmp_path / "r.png")

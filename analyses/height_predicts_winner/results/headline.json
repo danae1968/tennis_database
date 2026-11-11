@@ -1,0 +1,32 @@
+{
+ "WTA": {
+  "taller_player_wins_test": {
+   "taller_wins": 0.5391672547635851,
+   "lo": 0.5261683259624392,
+   "hi": 0.5521131286980228,
+   "n": 5668,
+   "share_equal_height": 0.0699048244174598
+  },
+  "accuracy": {
+   "Coin flip": 0.5,
+   "Height only": 0.5364292746964228,
+   "Ranking only": 0.6304561864128652,
+   "Ranking + height": 0.6302920905808993
+  }
+ },
+ "ATP": {
+  "taller_player_wins_test": {
+   "taller_wins": 0.5487646293888166,
+   "lo": 0.5385935580071671,
+   "hi": 0.5588951178994238,
+   "n": 9228,
+   "share_equal_height": 0.111923780194399
+  },
+  "accuracy": {
+   "Coin flip": 0.5,
+   "Height only": 0.5433067077278414,
+   "Ranking only": 0.6398806659609277,
+   "Ranking + height": 0.6393032431912232
+  }
+ }
+}

@@ -1,0 +1,7 @@
+step,count
+"match rows (WTA, ATP tour level)",58908
+  removed: team events,4447
+  removed: retirement / walkover / unparseable score,2108
+completed matches,52353
+  with both heights,46981
+  with both heights and both ranks,46854

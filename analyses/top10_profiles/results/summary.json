@@ -1,0 +1,123 @@
+{
+  "window_days": 364,
+  "levels_included": [
+    "1000",
+    "250",
+    "500",
+    "A",
+    "F",
+    "G",
+    "M"
+  ],
+  "challengers_included": false,
+  "qualifying_included": false,
+  "WTA": {
+    "as_of": "2026-11-03",
+    "forced_include": {},
+    "first_pushed_out": [
+      "Marta Kostyuk (rank 10)"
+    ],
+    "stale_excluded": [
+      "Victoria Mboko (rank 9 on 2026-06-08)"
+    ],
+    "window_start_exclusive": "2025-11-04",
+    "matches_in_window": 2429,
+    "service_game_flags": {
+      "expected": 2429
+    }
+  },
+  "ATP": {
+    "as_of": "2026-11-08",
+    "forced_include": {
+      "Jannik Sinner": "user confirmed still top 10 as of Nov 2026; only matches up to his last one (July 2026) are in the window"
+    },
+    "first_pushed_out": [
+      "Rafael Jodar (rank 10)"
+    ],
+    "stale_excluded": [],
+    "window_start_exclusive": "2025-11-09",
+    "matches_in_window": 2490,
+    "service_game_flags": {
+      "expected": 2490
+    }
+  },
+  "pressure_tests": {
+    "n_comparisons": 130,
+    "n_p_below_0.05_uncorrected": 10,
+    "n_p_holm_below_0.05": 0,
+    "min_p_holm": 0.6245225883607975,
+    "largest": [
+      {
+        "tour": "WTA",
+        "name": "Linda Noskova",
+        "measure": "Deuce vs overall rate (charted)",
+        "diff": -15.459710387648286,
+        "p": 0.01728082475908704,
+        "p_holm": 1.0
+      },
+      {
+        "tour": "ATP",
+        "name": "Arthur Fils",
+        "measure": "DeuceR vs overall rate (charted)",
+        "diff": 10.036004264665515,
+        "p": 0.07930508039314234,
+        "p_holm": 1.0
+      },
+      {
+        "tour": "ATP",
+        "name": "Jannik Sinner",
+        "measure": "BP vs overall rate (charted)",
+        "diff": 10.027446196770196,
+        "p": 0.03739751871918635,
+        "p_holm": 1.0
+      },
+      {
+        "tour": "ATP",
+        "name": "Daniil Medvedev",
+        "measure": "Deuce vs overall rate (charted)",
+        "diff": 9.431193168699139,
+        "p": 0.015343356040079885,
+        "p_holm": 1.0
+      },
+      {
+        "tour": "ATP",
+        "name": "Alex de Minaur",
+        "measure": "BP vs overall rate (charted)",
+        "diff": 9.020700097024548,
+        "p": 0.040712175001472624,
+        "p_holm": 1.0
+      }
+    ]
+  },
+  "winners_unforced_corr": {
+    "WTA": {
+      "r": 0.1050088685168637,
+      "ci": [
+        -0.5617588757261294,
+        0.6890759831985427
+      ],
+      "n": 10
+    },
+    "ATP": {
+      "r": 0.4627705199161182,
+      "ci": [
+        -0.2354633121179951,
+        0.8459192281384119
+      ],
+      "n": 10
+    }
+  },
+  "charted_tour_reference": {
+    "WTA": {
+      "w100": 14.60701542301168,
+      "u100": 19.274864975529862,
+      "charted_player_matches": 762.0
+    },
+    "ATP": {
+      "w100": 17.69879675647397,
+      "u100": 17.90642165838347,
+      "charted_player_matches": 402.0
+    }
+  },
+  "profiles_csv": "results/player_profiles.csv"
+}

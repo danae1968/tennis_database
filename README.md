@@ -1,6 +1,6 @@
 # tennis_database
 
-Three questions about professional tennis, answered from public match and point-by-point data.
+Questions about professional tennis, answered from public match and point-by-point data.
 Each analysis has its own README with method, results, figures and caveats.
 
 | Question | Short answer | Details |
@@ -8,6 +8,8 @@ Each analysis has its own README with method, results, figures and caveats.
 | **Does serving first in a set help you win it?** | Barely. The first server wins 52.7% of first sets, but about half of that is stronger players choosing to serve; at equal strength it is about 51% (an edge of 0–2 points). The 45.9% in later sets is selection: the player who just lost a set usually serves first next, and at equal ranking and previous-set result it is 50%. | [analyses/serve_first](analyses/serve_first/README.md) |
 | **Are tennis players' birth months unevenly distributed?** | Yes. January–April births are over-represented and October–December under-represented (about 1.3× as many Q1 as Q4 births among players with a tour-level match), far beyond chance and consistent with the relative age effect. | [analyses/birth_months](analyses/birth_months/README.md) |
 | **Have points played and match duration changed over the last decade?** | Points per game, set and match are flat; each point takes longer (about +2 s per decade at the Slams, 28 → 31 s for men), so games, sets and matches are longer (best-of-3 matches +10–15 min per decade). | [analyses/match_length_trends](analyses/match_length_trends/README.md) |
+| **Has the game changed from 2016 to 2026 (aces, breaks, winners)?** | Only at the margins. Ace rates are flat (WTA about 4, ATP about 8 per 100 serve points); breaks fell by about 1 point per decade on WTA and ATP hard courts; Slam winners (excluding aces) edged down by 1–2 points per decade. Surface and tour gaps are far larger than any trend. | [analyses/serve_return_trends](analyses/serve_return_trends/README.md) |
+| **Can height alone predict who wins?** | A little. Height alone picks the winner 54% of the time (vs 50% for a coin flip), more on grass and less on clay, mainly through the serve. Given the rankings (63–64% accuracy), height adds almost nothing. | [analyses/height_predicts_winner](analyses/height_predicts_winner/README.md) |
 
 ## Setup
 

@@ -30,3 +30,20 @@ clean: clean-cache
 	rm -rf .pytest_cache src/*.egg-info build dist
 	find . -path ./.venv -prune -o -type d -name __pycache__ -prune -exec rm -rf {} +
 	find analyses -name "*.tmp.png" -delete
+
+# --- SONNET: top10_profiles ---------------------------------------------------
+.PHONY: top10_profiles
+top10_profiles:
+	$(PY) analyses/top10_profiles/run.py
+# --- end SONNET block ---------------------------------------------------------
+
+# --- OPUS: new analyses -----------------------------------------------------------
+.PHONY: serve_return_trends height_predicts_winner
+serve_return_trends:
+	$(PY) analyses/serve_return_trends/run.py
+
+height_predicts_winner:
+	$(PY) analyses/height_predicts_winner/run.py
+
+all: serve_return_trends height_predicts_winner
+# --- end OPUS block ----------------------------------------------------------------

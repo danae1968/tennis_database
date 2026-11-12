@@ -1,11 +1,8 @@
 # tennis_database
 
-Questions about women's and men's professional tennis, answered from public match and point-by-point data.
+This is a curiosity project. Like many tennis fans, I have intuitions about the sport. For example, I find myself hoping my favourite player wins the coin toss and gets to serve first. But are intuitions like this backed by data? Each page below takes one question and answers it with public match and point-by-point data from the women’s and men’s tours. 
 
 **Read it as a website: <https://danae1968.github.io/tennis_database/>**
-
-The analyses were carried out by AI agents (Claude) under my direction, with independent cross-review;
-see [How this was built](#how-this-was-built).
 
 ## The questions
 
@@ -93,4 +90,4 @@ An orchestrating Claude session split the work between two Claude agents, Opus (
 trends, height) and Sonnet (birth months, match length, top 10), who worked independently. Each then reviewed
 the other's analysis, re-running the code and checking the headline numbers with their own code. The author fixed
 or answered each point, and the reviewer verified the fixes. This review → fix → verify cycle repeated until both
-agreed.
+agreed, see [How this was built](#how-this-was-built).

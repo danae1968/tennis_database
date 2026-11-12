@@ -60,3 +60,23 @@ def load_tml(years: range) -> pd.DataFrame:
     d["points"] = d["w_svpt"] + d["l_svpt"]
     d["edition"] = d["year"].astype(str) + "|" + d["tourney_id"].astype(str)
     return d
+
+
+# ---- reliable-period rules for the tour files (see METHODS) -------------------------------------
+GROUP_START = {"ATP bo3": 1995, "ATP bo5": 2000, "Challenger": 2010, "WTA": 2009}
+RULE_STEP_YEAR = 2013      # tour-level match times are about 7 minutes shorter from this year on (ATP enforces the 25-second rule more strictly)
+
+
+def restrict_to_reliable(d: pd.DataFrame) -> pd.DataFrame:
+    """Keep each group only from the first year in which its match files are usable (:data:`GROUP_START`)."""
+    first = d["group"].map(GROUP_START)
+    return d[d["year"] >= first].copy()
+
+
+def blank_low_coverage(d: pd.DataFrame, cols: list[str], by: list[str], min_share: float = 0.5) -> pd.DataFrame:
+    """Set ``cols`` to NaN in every ``by`` cell (e.g. group x year) where fewer than ``min_share`` of matches
+    have a recorded ``minutes`` value, so a partly recorded year is not read as the whole year."""
+    d = d.copy()
+    share = d.groupby(by)["minutes"].transform(lambda s: s.notna().mean())
+    d.loc[share < min_share, cols] = np.nan
+    return d

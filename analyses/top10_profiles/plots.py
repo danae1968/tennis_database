@@ -1,4 +1,4 @@
-"""Figures for the top-10 profiles (WTA first, left / top; Okabe-Ito colours; markers differ by tour)."""
+"""Figures for the top-10 profiles (WTA panels left / top; markers differ by tour)."""
 from __future__ import annotations
 
 import matplotlib.pyplot as plt

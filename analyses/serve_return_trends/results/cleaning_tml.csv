@@ -1,7 +1,8 @@
 step,count
-"match rows (ATP, WTA, Challenger files)",113095
-"  removed: team events (Davis Cup, BJK Cup)",4447
-  removed: retirement / walkover / unparseable score,4350
-  removed: serve statistics missing,866
+"match rows (ATP, WTA, Challenger files)",357352
+"  removed: seasons before reliable serve stats (WTA < 2009, Challenger < 2010)",115202
+"  removed: team events (Davis Cup, BJK Cup)",14507
+  removed: retirement / walkover / unparseable score,8412
+  removed: serve statistics missing,5077
 "  removed: inconsistent stats (aces > points, saved > faced, breaks > games)",4
-matches used,103428
+matches used,214150

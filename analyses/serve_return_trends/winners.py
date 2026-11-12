@@ -1,6 +1,6 @@
 """Winners (excluding aces) and unforced errors per point from two sources.
 
-(a) Grand Slam point-by-point (``pbp-data/slam``), 2016-2024: every point of the covered matches.
+(a) Grand Slam point-by-point (``pbp-data/slam``), 2011-2024: every point of the covered matches.
     Point flags ``P1Winner``/``P2Winner`` INCLUDE aces in the IBM "Slamtracker" files (every ace is
     also flagged as a winner) but EXCLUDE them in the Infosys files (AO and RG 2018-21: an ace is
     never also a winner).  "Winner excluding aces" = winner flag AND NOT ace flag is correct for both.
@@ -17,7 +17,7 @@ from tennis.load import gender_from_match_id, load_charting, read_slam_points, s
 from tennis.names import names_match
 from tennis.paths import SLAM_SURFACE
 
-PBP_YEARS = range(2016, 2025)
+PBP_YEARS = range(2011, 2025)
 CHART_YEARS = range(2016, 2027)
 SLAM_ROUND = {1: "R128", 2: "R64", 3: "R32", 4: "R16", 5: "QF", 6: "SF", 7: "F"}
 CHART_SLAMS = {"Australian Open": "ausopen", "Roland Garros": "frenchopen", "Wimbledon": "wimbledon",
@@ -68,6 +68,33 @@ def load_pbp_matches(years=PBP_YEARS) -> pd.DataFrame:
     # matches whose winner/UE flags are all zero over many points are missing those annotations
     d["annotated"] = ~((d["winners_ex"] == 0) & (d["ue"] == 0) & (d["points"] >= 40))
     return d[d["gender"].notna()].reset_index(drop=True)
+
+
+def feed_check(p: pd.DataFrame) -> pd.DataFrame:
+    """Per Slam event: matches, share annotated, and the share of aces that are also flagged as winners
+    (1 in IBM files, 0 in Infosys files), so the 'winner and not ace' rule can be confirmed event by event."""
+    ev = p.groupby(["year", "slam", "provider"]).agg(matches=("match_id", "size"), annotated=("annotated", "mean"),
+                                                     aces=("aces", "sum"), aces_flagged_winner=("winner_and_ace", "sum"),
+                                                     points=("points", "sum"), winners_ex=("winners_ex", "sum")).reset_index()
+    ev["share_aces_flagged_winner"] = ev["aces_flagged_winner"] / ev["aces"]
+    ev["winners_ex_per_100"] = 100 * ev["winners_ex"] / ev["points"]
+    return ev
+
+
+def round_reweighted(p: pd.DataFrame, ref: pd.DataFrame) -> pd.DataFrame:
+    """Winners excluding aces per 100 points by year and gender, raw and with each year's round-specific
+    rates weighted to the round mix of ``ref`` (checks that years with fewer covered matches, e.g. mostly
+    show courts, are not driving the trend)."""
+    rows = []
+    for (y, g), s in p.groupby(["year", "gender"]):
+        share = ref[ref["gender"] == g]["round"].value_counts(normalize=True)
+        by_round = s.groupby("round")[["winners_ex", "points"]].sum()
+        rate = by_round["winners_ex"] / by_round["points"]
+        w = share.reindex(rate.index).fillna(0.0)
+        rows.append({"year": int(y), "gender": g, "matches": len(s), "share_first_round": float((s["round"] == "R128").mean()),
+                     "raw": 100 * s["winners_ex"].sum() / s["points"].sum(),
+                     "round_reweighted": 100 * float((rate * w).sum() / w.sum())})
+    return pd.DataFrame(rows)
 
 
 def _clean_tournament(s: pd.Series) -> pd.Series:

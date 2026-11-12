@@ -33,3 +33,21 @@ desktop.ini
 CLAUDE.md
 CLAUDE.local.md
 /private/
+
+# Quarto site build output
+_site/
+.quarto/
+/.quarto/
+
+# Added by privacy audit: further private paths and secrets (never published)
+.claude/
+**/.claude/
+/analyses/reviews/
+/scratch/
+/tmp/
+*.log
+.env
+.env.*
+*.pem
+*.key
+*.ipynb

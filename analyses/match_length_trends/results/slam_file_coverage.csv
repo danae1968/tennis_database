@@ -1,4 +1,16 @@
 year,slam,matches,points,raw_rows,clock_share,used
+2011,ausopen,179,31522,31523,1.0,True
+2011,frenchopen,194,34339,34340,1.0,True
+2011,wimbledon,117,21368,21368,1.0,True
+2011,usopen,161,27309,27309,1.0,True
+2012,ausopen,167,29001,29001,0.999,True
+2012,frenchopen,172,30699,31184,1.0,True
+2012,wimbledon,140,25920,25920,1.0,True
+2012,usopen,171,30972,30975,1.0,True
+2013,ausopen,179,31688,31688,1.0,True
+2013,frenchopen,186,33209,33248,1.0,True
+2013,wimbledon,146,25691,25691,1.0,True
+2013,usopen,167,30353,30353,1.0,True
 2014,ausopen,158,27659,27659,1.0,True
 2014,frenchopen,254,44344,44426,1.0,True
 2014,wimbledon,253,47619,47619,1.0,True

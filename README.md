@@ -1,42 +1,49 @@
 # tennis_database
 
-Questions about professional tennis, answered from public match and point-by-point data.
-Each analysis has its own README with method, results, figures and caveats.
+Questions about women's and men's professional tennis, answered from public match and point-by-point data.
 
-| Question | Short answer | Details |
-|---|---|---|
-| **Does serving first in a set help you win it?** | Barely. The first server wins 52.7% of first sets, but about half of that is stronger players choosing to serve; at equal strength it is about 51% (an edge of 0–2 points). The 45.9% in later sets is selection: the player who just lost a set usually serves first next, and at equal ranking and previous-set result it is 50%. | [analyses/serve_first](analyses/serve_first/README.md) |
-| **Are tennis players' birth months unevenly distributed?** | Yes. January–April births are over-represented and October–December under-represented (about 1.3× as many Q1 as Q4 births among players with a tour-level match), far beyond chance and consistent with the relative age effect. | [analyses/birth_months](analyses/birth_months/README.md) |
-| **Have points played and match duration changed over the last decade?** | Points per game, set and match are flat; each point takes longer (about +2 s per decade at the Slams, 28 → 31 s for men), so games, sets and matches are longer (best-of-3 matches +10–15 min per decade). | [analyses/match_length_trends](analyses/match_length_trends/README.md) |
-| **Has the game changed from 2016 to 2026 (aces, breaks, winners)?** | Only at the margins. Ace rates are flat (WTA about 4, ATP about 8 per 100 serve points); breaks fell by about 1 point per decade on WTA and ATP hard courts; Slam winners (excluding aces) edged down by 1–2 points per decade. Surface and tour gaps are far larger than any trend. | [analyses/serve_return_trends](analyses/serve_return_trends/README.md) |
-| **Can height alone predict who wins?** | A little. Height alone picks the winner 54% of the time (vs 50% for a coin flip), more on grass and less on clay, mainly through the serve. Given the rankings (63–64% accuracy), height adds almost nothing. | [analyses/height_predicts_winner](analyses/height_predicts_winner/README.md) |
+**Read it as a website: <https://danae1968.github.io/tennis_database/>**
 
-## Setup
+The analyses were carried out by AI agents (Claude) under my direction, with independent cross-review;
+see [How this was built](#how-this-was-built).
+
+## The questions
+
+| Question | Short answer |
+|---|---|
+| [Does serving first in a set help you win it?](analyses/serve_first/README.md) | Yes, slightly. The player who serves first wins 52.7% of first sets. Against an equally ranked opponent it is about 51%, an edge of roughly 1 percentage point (somewhere between 0 and 2). |
+| [Are tennis players born earlier in the year than chance would predict?](analyses/birth_months/README.md) | Yes. Among the 8,073 players who have played a tour-level match, births in January to April are 10–19% more common than an even spread over the year would give, and births in October to December are 11–16% less common. |
+| [Are tennis matches getting longer, and why?](analyses/match_length_trends/README.md) | Points per game, per set and per match have not changed since 2014, but each point takes longer. |
+| [Have aces, breaks of serve and winners changed over the years?](analyses/serve_return_trends/README.md) | Aces have not changed: about 4 per 100 serve points for women and 8 for men. Breaks of serve have become slightly rarer on hard courts, by about 2 per 100 return games per decade, with no clear change on clay or grass. |
+| [Can height alone predict who wins a tennis match?](analyses/height_predicts_winner/README.md) | A little. Knowing only the two players' heights, you would pick the winner 53.6% of the time in women's matches and 54.3% in men's, against 50% for a coin flip. |
+| [How do the current top-10 women and men win their matches?](analyses/top10_profiles/README.md) | The current top 10 get there by different routes: some win mainly through their serve, others through their return. On break points, none of them does reliably better or worse than their normal level predicts. |
+
+Each folder has a short `README.md` for readers and a `METHODS.md` with the full method, tables and checks.
+
+## Reproduce
 
 ```bash
 python3 -m venv .venv
 .venv/bin/pip install -r requirements.txt
-.venv/bin/pip install -e .        # installs the shared package `tennis` (src/tennis) in editable mode
+.venv/bin/pip install -e .        # the shared package `tennis` (src/tennis), editable
 make data                         # download raw data (idempotent; see "Data sources")
-make all                          # rebuild every analysis from raw data (~4 min)
+make all                          # rebuild every analysis from raw data
 make test                         # run all tests
+make site                         # build the website into _site/ (needs Quarto; no data or Python needed)
 ```
 
-`make serve_first`, `make birth_months` and `make match_length_trends` rebuild one analysis; each is also
-runnable on its own, e.g. `.venv/bin/python analyses/serve_first/run.py`. Outputs (`results/`, `figures/`)
-are deterministic. Set `TENNIS_DATA_ROOT` to read the raw data from another folder.
+`make <name>` rebuilds one analysis (e.g. `make serve_first`). Outputs in `results/` and `figures/` are
+deterministic. Set `TENNIS_DATA_ROOT` to read the raw data from another folder.
 
 ## Layout
 
 ```
-pyproject.toml            package "tennis" (src layout), pinned dependencies, pytest config
-Makefile                  make data | test | all | <analysis> | clean
-scripts/download_data.sh  TennisMyLife API + pinned Slam point-by-point and Match Charting downloads
-src/tennis/               shared code: paths, loaders, statistics helpers, plotting house style
-analyses/<name>/          run.py + analysis-specific modules, results/ (CSV/JSON), figures/ (PNG), README.md
-analyses/reviews/         cross-reviews, fix responses and verifications between the two agents
-tests/                    tests for the shared code (tests/shared) and for each analysis
-archive/set_first_serve_v1/  earlier serve-order work based on inferred serve order (kept for reference)
+analyses/<name>/          run.py and modules, results/ (CSV/JSON), figures/ (PNG), README.md, METHODS.md
+src/tennis/               shared code: paths, loaders, score parsing, statistics, plotting style
+tests/                    tests for the shared code and each analysis
+scripts/download_data.sh  data download (versions pinned)
+archive/                  earlier exploratory serve-order work, kept for reference
+_quarto.yml, index.qmd, about/, site/   the website; .github/workflows/publish.yml deploys it
 ```
 
 Raw data folders (`tml-data/`, `pbp-data/`, `wta/`, root CSVs) are read-only inputs and are not committed.
@@ -62,8 +69,7 @@ repository was deleted; the copy used here is a shallow clone of the fork
 Selected files of Jeff Sackmann's [tennis_MatchChartingProject](https://github.com/JeffSackmann/tennis_MatchChartingProject)
 at commit `1813a1309b7ed7ebf1c7e884b32bf675d00e4edf` (2026-09-18): `charting-{m,w}-matches.csv`,
 `charting-{m,w}-stats-Overview.csv`, `charting-{m,w}-stats-KeyPointsServe.csv`,
-`charting-{m,w}-stats-KeyPointsReturn.csv` and its README. Loader: `tennis.load.load_charting`
-(not yet used by an analysis).
+`charting-{m,w}-stats-KeyPointsReturn.csv` and its README. Loader: `tennis.load.load_charting`.
 
 ### WTA data (`wta/`, and `matches.csv`, `players.csv`, `qualifying_matches.csv`, `rankings.csv` in the root)
 
@@ -83,9 +89,8 @@ Attribution is required; non-commercial use only.
 
 ## How this was built
 
-An orchestrating Claude session split the work between two Claude agents, **Opus** (serve order) and
-**Sonnet** (birth months, match length), who worked independently. Each then reviewed the other's
-analysis (re-running the code and checking headline numbers with their own code), fixed the points
-raised in the review of their own work, and verified the other's fixes. All reviews, responses and
-verifications are in [analyses/reviews/](analyses/reviews/). The code was finally refactored into this
-single project with the shared `tennis` package; every result table was checked to be unchanged.
+An orchestrating Claude session split the work between two Claude agents, Opus (serve order, serve/return
+trends, height) and Sonnet (birth months, match length, top 10), who worked independently. Each then reviewed
+the other's analysis, re-running the code and checking the headline numbers with their own code. The author fixed
+or answered each point, and the reviewer verified the fixes. This review → fix → verify cycle repeated until both
+agreed.

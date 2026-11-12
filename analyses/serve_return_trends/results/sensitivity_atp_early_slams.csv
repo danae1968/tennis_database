@@ -1,0 +1,10 @@
+check,value,lo,hi,slope_before_2016,slope_after_2016,change,change_lo,change_hi
+"ATP Slam serve points per service game, 1991-99",6.976757,,,,,,,
+"ATP Slam serve points per service game, 2000-25",6.380981,,,,,,,
+"ATP non-Slam serve points per service game, 1991-99",6.484401,,,,,,,
+ace_rate: all ATP matches,0.666416,0.494558,0.838273,0.933994,-0.517682,-1.451677,-1.961999,-0.941354
+break_rate: all ATP matches,-1.396390,-1.664138,-1.128641,-1.621369,-0.408961,1.212408,0.294628,2.130188
+ace_rate: without Slams before 2000,0.548950,0.389872,0.708028,0.798748,-0.416142,-1.214890,-1.718456,-0.711324
+break_rate: without Slams before 2000,-1.450109,-1.731097,-1.169121,-1.741686,-0.326939,1.414747,0.370540,2.458954
+ace_rate: without any Slams,0.590510,0.420353,0.760667,0.813964,-0.389384,-1.203348,-1.747054,-0.659643
+break_rate: without any Slams,-1.529792,-1.813449,-1.246136,-1.729885,-0.654490,1.075396,0.001518,2.149273

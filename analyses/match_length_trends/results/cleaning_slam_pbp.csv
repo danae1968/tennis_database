@@ -1,21 +1,21 @@
 step,count
-point rows in singles files 2014-2024,1569536
+point rows in singles files 2011-2024,1922136
 "  removed: AO/FO 2018-21 files (no clock, no games-won or set-winner columns)",369445
-  removed: 0X/0Y non-point rows (files used),7081
-point rows used,1193010
-  within-game cycle times: first point of game / missing clock,187809
-  within-game cycle times: zero or negative gap (removed),3073
-  within-game cycle times: gap > 120s (removed),1870
-  within-game cycle times kept,1000258
+  removed: 0X/0Y non-point rows (files used),7610
+point rows used,1545081
+  within-game cycle times: first point of game / missing clock,243130
+  within-game cycle times: zero or negative gap (removed),3872
+  within-game cycle times: gap > 120s (removed),2418
+  within-game cycle times kept,1295661
 doubles/mixed point files not read,34
-singles matches in used files,6507
+singles matches in used files,8486
   removed: gender not identifiable,0
-  removed: incomplete (retired/walkover/unfinished),242
-complete men's + women's matches (analysis frame),6265
-  of which with clean clock duration,5890
-  of which interrupted (gap > 600s) or missing clock: duration dropped,375
-games in used files,187692
-  tiebreak games (excluded from points-per-game),2804
-"  games with usable duration (no changeover, <=15 min)",78726
-sets in analysis frame,18897
-  with usable duration,18463
+  removed: incomplete (retired/walkover/unfinished),317
+complete men's + women's matches (analysis frame),8169
+  of which with clean clock duration,7782
+  of which interrupted (gap > 600s) or missing clock: duration dropped,387
+games in used files,242954
+  tiebreak games (excluded from points-per-game),3576
+"  games with usable duration (no changeover, <=15 min)",101876
+sets in analysis frame,24539
+  with usable duration,24093

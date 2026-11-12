@@ -11,6 +11,7 @@ from pathlib import Path
 import matplotlib.pyplot as plt  # noqa: F401
 import pandas as pd
 from matplotlib.lines import Line2D
+from matplotlib.ticker import MaxNLocator
 
 from tennis.plotting import BAND_ALPHA, BLACK, BLUE, GREEN, ORANGE, PURPLE, SKY, VERMILLION, new_figure, save_figure, wrap
 
@@ -26,8 +27,22 @@ STYLE = {
 }
 # panel-specific labels such as "ATP bo3 2 sets" fall back to a cycle below
 FALLBACK = [(SKY, "o", "-"), (BLUE, "s", "--"), (BLACK, "^", "-."), (ORANGE, "D", ":")]
-RULES = [(2018, "2018: 25-second serve clock (US Open)", "--"), (2019, "2019: Wimbledon 12-12 final-set tiebreak", (0, (6, 2, 1, 2, 1, 2))),
+STEP = (2013, "2013: points get faster", "-")
+RULES = [STEP, (2018, "2018: 25-second serve clock (US Open)", "--"), (2019, "2019: Wimbledon 12-12 final-set tiebreak", (0, (6, 2, 1, 2, 1, 2))),
          (2020, "2020: COVID-19 season", ":"), (2022, "2022: 10-point final-set tiebreak at 6-6 (US Open, Wimbledon)", "-.")]
+
+
+PRETTY = {"women": "Women", "men": "Men", "WTA": "Women", "ATP bo3": "Men, best of 3", "ATP bo5": "Men, best of 5 (mostly Slams)", "Challenger": "Challenger (men)", "ATP": "Men"}
+
+
+def pretty(label: str) -> str:
+    """Reader-facing name for a series or panel label ('ATP bo3 2 sets' -> 'Men, best of 3, 2 sets')."""
+    for k in sorted(PRETTY, key=len, reverse=True):
+        if label == k:
+            return PRETTY[k]
+        if label.startswith(k + " "):
+            return PRETTY[k].replace(" (mostly Slams)", "") + ", " + label[len(k) + 1:]
+    return label
 
 
 def style_for(label: str, i: int = 0) -> tuple[str, str, str]:
@@ -40,51 +55,55 @@ def style_for(label: str, i: int = 0) -> tuple[str, str, str]:
     return FALLBACK[i % len(FALLBACK)]
 
 
-def _rules(ax, years) -> None:
+TOUR_EVENTS = [STEP, RULES[3]]       # tour-level figures: only the 2013 drop and the COVID season (the other rules are Slam-specific)
+
+
+def _rules(ax, years, tour: bool = False) -> None:
     lo, hi = min(years), max(years)
-    for x, _, ls in RULES:
+    for x, _, ls in (TOUR_EVENTS if tour else RULES):
         if lo <= x <= hi:
             ax.axvline(x, color="grey", ls=ls, lw=1.1, zorder=0)
 
 
-def _rule_legend(fig, years) -> None:
+def _rule_legend(fig, years, tour: bool = False) -> None:
     lo, hi = min(years), max(years)
-    hs = [Line2D([0], [0], color="grey", ls=ls, lw=1.3, label=lab) for x, lab, ls in RULES if lo <= x <= hi]
+    hs = [Line2D([0], [0], color="grey", ls=ls, lw=1.3, label=lab) for x, lab, ls in (TOUR_EVENTS if tour else RULES) if lo <= x <= hi]
     fig.legend(handles=hs, loc="outside lower center", ncol=2, frameon=False, title="Vertical lines mark rule changes and events", title_fontsize=10.5)
 
 
-def line_bands(ax, t: pd.DataFrame, label: str, i: int = 0, stat: str = "median", legend_label: str | None = None) -> None:
-    """Median line, IQR band (alpha .2) and bootstrap-CI whiskers for one series; or mean +- CI if ``stat='mean'``."""
+def line_bands(ax, t: pd.DataFrame, label: str, i: int = 0, stat: str = "median", legend_label: str | None = None, iqr: bool = True) -> None:
+    """Median line with faint 95%-CI whiskers (and optionally an IQR band) for one series; or mean +- CI if ``stat='mean'``."""
     c, m, ls = style_for(label, i)
-    lab = legend_label or label
+    lab = legend_label or pretty(label)
     if stat == "mean":
-        ax.errorbar(t["year"], t["mean"], yerr=[t["mean"] - t["mean_lo"], t["mean_hi"] - t["mean"]], color=c, marker=m, ls=ls,
-                    ms=6, capsize=3, lw=1.6, label=lab)
-        return
-    ax.fill_between(t["year"], t["q25"], t["q75"], color=c, alpha=BAND_ALPHA, lw=0)
-    ax.errorbar(t["year"], t["median"], yerr=[t["median"] - t["ci_lo"], t["ci_hi"] - t["median"]], color=c, marker=m, ls=ls,
-                ms=6, capsize=3, lw=1.6, label=lab)
+        lo, hi, mid = t["mean_lo"], t["mean_hi"], t["mean"]
+    else:
+        lo, hi, mid = t["ci_lo"], t["ci_hi"], t["median"]
+        if iqr:
+            ax.fill_between(t["year"], t["q25"], t["q75"], color=c, alpha=BAND_ALPHA, lw=0)
+    ax.vlines(t["year"], lo, hi, color=c, lw=0.9, alpha=0.45, zorder=1)
+    ax.plot(t["year"], mid, color=c, marker=m, ls=ls, ms=6, lw=1.6, label=lab, zorder=2)
 
 
-def _finish(fig, path: Path, title: str, width: int, years) -> Path:
+def _finish(fig, path: Path, title: str, width: int, years, tour: bool = False) -> Path:
     fig.suptitle(wrap(title, width), fontsize=12)
-    _rule_legend(fig, years)
+    _rule_legend(fig, years, tour)
     return save_figure(fig, path)
 
 
-def series_figure(tables: dict[str, pd.DataFrame], title: str, ylabel: str, path: Path, colors: dict | None = None, stat: str = "median") -> Path:
-    """One axis, one line per entry. Shading = interquartile range of the unit; bars = 95% CI of the median."""
+def series_figure(tables: dict[str, pd.DataFrame], title: str, ylabel: str, path: Path, colors: dict | None = None, stat: str = "median", tour: bool = False, iqr: bool = False) -> Path:
+    """One axis, one line per entry. Bars = 95% CI of the median; ``iqr=True`` adds the interquartile range of the unit as a band."""
     fig, ax = new_figure(figsize=(9.5, 6))
     yrs = []
     for i, (k, t) in enumerate(tables.items()):
-        line_bands(ax, t, k, i, stat); yrs += list(t["year"])
-    _rules(ax, yrs)
-    ax.set_xlabel("Year"); ax.set_ylabel(ylabel); ax.grid(alpha=.3)
+        line_bands(ax, t, k, i, stat, iqr=iqr); yrs += list(t["year"])
+    _rules(ax, yrs, tour)
+    ax.set_xlabel("Year"); ax.set_ylabel(ylabel); ax.grid(alpha=.3); ax.xaxis.set_major_locator(MaxNLocator(integer=True))
     ax.legend(loc="upper left", bbox_to_anchor=(1.01, 1.0), frameon=False)
-    return _finish(fig, path, title, 80, yrs)
+    return _finish(fig, path, title, 80, yrs, tour)
 
 
-def panel_figure(panels: dict[str, dict[str, pd.DataFrame]], title: str, ylabel: str, path: Path, colors: dict | None = None, stat: str = "median") -> Path:
+def panel_figure(panels: dict[str, dict[str, pd.DataFrame]], title: str, ylabel: str, path: Path, colors: dict | None = None, stat: str = "median", tour: bool = False, iqr: bool = False) -> Path:
     """Several subplots (one per panel name), each with its own series dict and its own legend underneath."""
     n = len(panels)
     fig, axes = new_figure(1, n, figsize=(5.4 * n, 6.6))
@@ -93,10 +112,10 @@ def panel_figure(panels: dict[str, dict[str, pd.DataFrame]], title: str, ylabel:
     for ax, (name, tabs) in zip(axes, panels.items()):
         yrs = []
         for i, (k, t) in enumerate(tabs.items()):
-            line_bands(ax, t, k, i, stat); yrs += list(t["year"])
+            line_bands(ax, t, k, i, stat, iqr=iqr); yrs += list(t["year"])
         if yrs:
-            _rules(ax, yrs); allyrs += yrs
-        ax.set_title(name); ax.set_xlabel("Year"); ax.grid(alpha=.3)
+            _rules(ax, yrs, tour); allyrs += yrs
+        ax.set_title(pretty(name)); ax.set_xlabel("Year"); ax.grid(alpha=.3); ax.xaxis.set_major_locator(MaxNLocator(integer=True))
         ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.17), frameon=False, ncol=1)
     axes[0].set_ylabel(ylabel)
-    return _finish(fig, path, title, 100, allyrs)
+    return _finish(fig, path, title, 100, allyrs, tour)

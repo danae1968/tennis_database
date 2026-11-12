@@ -1,0 +1,5 @@
+tour,ranking_summary,rho,lo,hi,n
+WTA,median_rank,0.216234,0.108732,0.313254,325
+WTA,best_rank,0.228778,0.112334,0.330769,325
+ATP,median_rank,0.247755,0.143831,0.348331,342
+ATP,best_rank,0.276136,0.174341,0.377982,342

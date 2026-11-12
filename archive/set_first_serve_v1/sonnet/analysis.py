@@ -1,6 +1,6 @@
 import pandas as pd, numpy as np, glob, re, os, random, json
 from functools import lru_cache
-ROOT='/mnt/c/Users/krist/Documents/Danae/tennis/tml-data'
+ROOT=os.path.join(os.path.dirname(os.path.abspath(__file__)),'..','..','..','tml-data')
 OUT=os.path.dirname(os.path.abspath(__file__))
 TOK=re.compile(r'^(\d+)-(\d+)(?:\(\d+\))?$')
 

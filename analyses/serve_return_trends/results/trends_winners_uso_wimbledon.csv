@@ -1,19 +1,37 @@
 source,gender,metric,surface,per_decade,lo,hi,p,n,n_clusters
-"Slam pbp, US Open + Wimbledon only",W,winners_ex_rate,All,-1.916362,-3.105533,-0.727192,0.003685,1909,16
-"Slam pbp, US Open + Wimbledon only",W,winners_ex_rate,Hard,-1.758165,-3.526515,0.010186,0.051048,1020,9
-"Slam pbp, US Open + Wimbledon only",W,winners_ex_rate,Grass,-2.101737,-4.168338,-0.035136,0.047257,889,7
-"Slam pbp, US Open + Wimbledon only",W,ue_rate,All,3.653356,-0.017665,7.324378,0.050978,1909,16
-"Slam pbp, US Open + Wimbledon only",W,ue_rate,Hard,-0.615572,-4.107375,2.876231,0.695014,1020,9
-"Slam pbp, US Open + Wimbledon only",W,ue_rate,Grass,8.655679,5.074705,12.236653,0.001040,889,7
-"Slam pbp, US Open + Wimbledon only",W,ace_rate,All,0.369932,-0.272732,1.012597,0.238766,1909,16
-"Slam pbp, US Open + Wimbledon only",W,ace_rate,Hard,0.486302,-0.740040,1.712643,0.387217,1020,9
-"Slam pbp, US Open + Wimbledon only",W,ace_rate,Grass,0.233571,-0.391148,0.858290,0.395545,889,7
-"Slam pbp, US Open + Wimbledon only",M,winners_ex_rate,All,-1.070689,-2.034507,-0.106870,0.031623,2015,17
-"Slam pbp, US Open + Wimbledon only",M,winners_ex_rate,Hard,-1.620883,-2.948823,-0.292943,0.022678,1005,9
-"Slam pbp, US Open + Wimbledon only",M,winners_ex_rate,Grass,-0.646556,-2.229744,0.936633,0.366371,1010,8
-"Slam pbp, US Open + Wimbledon only",M,ue_rate,All,3.828443,1.307214,6.349673,0.005359,2015,17
-"Slam pbp, US Open + Wimbledon only",M,ue_rate,Hard,-0.221294,-3.370116,2.927528,0.875275,1005,9
-"Slam pbp, US Open + Wimbledon only",M,ue_rate,Grass,6.950299,4.089135,9.811463,0.000703,1010,8
-"Slam pbp, US Open + Wimbledon only",M,ace_rate,All,-0.283421,-1.308022,0.741180,0.565789,2015,17
-"Slam pbp, US Open + Wimbledon only",M,ace_rate,Hard,0.638893,-0.555427,1.833213,0.252371,1005,9
-"Slam pbp, US Open + Wimbledon only",M,ace_rate,Grass,-0.994413,-2.803601,0.814776,0.234863,1010,8
+"Slam pbp 2011-2024, US Open + Wimbledon only",W,winners_ex_rate,All,-0.984284,-1.716268,-0.252300,0.010430,2769,26
+"Slam pbp 2011-2024, US Open + Wimbledon only",W,winners_ex_rate,Hard,-0.420379,-1.430816,0.590057,0.385108,1436,14
+"Slam pbp 2011-2024, US Open + Wimbledon only",W,winners_ex_rate,Grass,-1.573222,-2.595430,-0.551013,0.006063,1333,12
+"Slam pbp 2011-2024, US Open + Wimbledon only",W,ue_rate,All,3.578081,0.402916,6.753246,0.028740,2769,26
+"Slam pbp 2011-2024, US Open + Wimbledon only",W,ue_rate,Hard,-1.991131,-4.423853,0.441591,0.100470,1436,14
+"Slam pbp 2011-2024, US Open + Wimbledon only",W,ue_rate,Grass,9.394526,7.362606,11.426445,0.000001,1333,12
+"Slam pbp 2011-2024, US Open + Wimbledon only",W,ace_rate,All,0.079254,-0.362519,0.521027,0.714880,2769,26
+"Slam pbp 2011-2024, US Open + Wimbledon only",W,ace_rate,Hard,0.721103,0.147639,1.294567,0.017628,1436,14
+"Slam pbp 2011-2024, US Open + Wimbledon only",W,ace_rate,Grass,-0.591088,-1.021580,-0.160597,0.011613,1333,12
+"Slam pbp 2011-2024, US Open + Wimbledon only",M,winners_ex_rate,All,-1.010763,-1.576794,-0.444731,0.001097,2925,27
+"Slam pbp 2011-2024, US Open + Wimbledon only",M,winners_ex_rate,Hard,-0.701312,-1.478991,0.076366,0.073308,1451,14
+"Slam pbp 2011-2024, US Open + Wimbledon only",M,winners_ex_rate,Grass,-1.324761,-2.215118,-0.434404,0.007062,1474,13
+"Slam pbp 2011-2024, US Open + Wimbledon only",M,ue_rate,All,3.998789,1.728709,6.268869,0.001246,2925,27
+"Slam pbp 2011-2024, US Open + Wimbledon only",M,ue_rate,Hard,0.062616,-1.838194,1.963427,0.944348,1451,14
+"Slam pbp 2011-2024, US Open + Wimbledon only",M,ue_rate,Grass,7.992816,6.345951,9.639682,0.000000,1474,13
+"Slam pbp 2011-2024, US Open + Wimbledon only",M,ace_rate,All,-0.505694,-1.248249,0.236861,0.173376,2925,27
+"Slam pbp 2011-2024, US Open + Wimbledon only",M,ace_rate,Hard,0.429023,-0.501868,1.359913,0.337589,1451,14
+"Slam pbp 2011-2024, US Open + Wimbledon only",M,ace_rate,Grass,-1.454149,-2.500476,-0.407823,0.010505,1474,13
+"Slam pbp 2016-2024, US Open + Wimbledon only",W,winners_ex_rate,All,-1.916362,-3.105533,-0.727192,0.003685,1909,16
+"Slam pbp 2016-2024, US Open + Wimbledon only",W,winners_ex_rate,Hard,-1.758165,-3.526515,0.010186,0.051048,1020,9
+"Slam pbp 2016-2024, US Open + Wimbledon only",W,winners_ex_rate,Grass,-2.101737,-4.168338,-0.035136,0.047257,889,7
+"Slam pbp 2016-2024, US Open + Wimbledon only",W,ue_rate,All,3.653356,-0.017665,7.324378,0.050978,1909,16
+"Slam pbp 2016-2024, US Open + Wimbledon only",W,ue_rate,Hard,-0.615572,-4.107375,2.876231,0.695014,1020,9
+"Slam pbp 2016-2024, US Open + Wimbledon only",W,ue_rate,Grass,8.655679,5.074705,12.236653,0.001040,889,7
+"Slam pbp 2016-2024, US Open + Wimbledon only",W,ace_rate,All,0.369932,-0.272732,1.012597,0.238766,1909,16
+"Slam pbp 2016-2024, US Open + Wimbledon only",W,ace_rate,Hard,0.486302,-0.740040,1.712643,0.387217,1020,9
+"Slam pbp 2016-2024, US Open + Wimbledon only",W,ace_rate,Grass,0.233571,-0.391148,0.858290,0.395545,889,7
+"Slam pbp 2016-2024, US Open + Wimbledon only",M,winners_ex_rate,All,-1.070689,-2.034507,-0.106870,0.031623,2015,17
+"Slam pbp 2016-2024, US Open + Wimbledon only",M,winners_ex_rate,Hard,-1.620883,-2.948823,-0.292943,0.022678,1005,9
+"Slam pbp 2016-2024, US Open + Wimbledon only",M,winners_ex_rate,Grass,-0.646556,-2.229744,0.936633,0.366371,1010,8
+"Slam pbp 2016-2024, US Open + Wimbledon only",M,ue_rate,All,3.828443,1.307214,6.349673,0.005359,2015,17
+"Slam pbp 2016-2024, US Open + Wimbledon only",M,ue_rate,Hard,-0.221294,-3.370116,2.927528,0.875275,1005,9
+"Slam pbp 2016-2024, US Open + Wimbledon only",M,ue_rate,Grass,6.950299,4.089135,9.811463,0.000703,1010,8
+"Slam pbp 2016-2024, US Open + Wimbledon only",M,ace_rate,All,-0.283421,-1.308022,0.741180,0.565789,2015,17
+"Slam pbp 2016-2024, US Open + Wimbledon only",M,ace_rate,Hard,0.638893,-0.555427,1.833213,0.252371,1005,9
+"Slam pbp 2016-2024, US Open + Wimbledon only",M,ace_rate,Grass,-0.994413,-2.803601,0.814776,0.234863,1010,8

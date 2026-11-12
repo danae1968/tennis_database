@@ -1,7 +1,13 @@
-tour,comparison,per_decade,lo,hi,p
-WTA,Clay minus Hard slope,2.540371,0.359694,4.721048,0.022413
-WTA,Grass minus Hard slope,1.574910,-0.598392,3.748212,0.155509
-ATP,Clay minus Hard slope,2.083166,0.613938,3.552394,0.005452
-ATP,Grass minus Hard slope,1.403910,-0.127627,2.935447,0.072388
-Challenger,Clay minus Hard slope,-0.027906,-1.607316,1.551504,0.972374
-Challenger,Grass minus Hard slope,1.039950,-0.917145,2.997045,0.297647
+window,tour,comparison,per_decade,lo,hi,p
+whole period,WTA,Clay minus Hard slope,1.768552,0.488349,3.048756,0.006776
+whole period,WTA,Grass minus Hard slope,2.428495,0.946408,3.910581,0.001320
+whole period,ATP,Clay minus Hard slope,-0.464492,-1.067479,0.138495,0.131088
+whole period,ATP,Grass minus Hard slope,0.118517,-0.509256,0.746289,0.711363
+whole period,Challenger,Clay minus Hard slope,0.123303,-0.796477,1.043084,0.792742
+whole period,Challenger,Grass minus Hard slope,-0.731648,-2.059631,0.596335,0.280207
+2016-2025,WTA,Clay minus Hard slope,2.540371,0.359694,4.721048,0.022413
+2016-2025,WTA,Grass minus Hard slope,1.574910,-0.598392,3.748212,0.155509
+2016-2025,ATP,Clay minus Hard slope,2.083166,0.613938,3.552394,0.005452
+2016-2025,ATP,Grass minus Hard slope,1.403910,-0.127627,2.935447,0.072388
+2016-2025,Challenger,Clay minus Hard slope,-0.027906,-1.607316,1.551504,0.972374
+2016-2025,Challenger,Grass minus Hard slope,1.039950,-0.917145,2.997045,0.297647

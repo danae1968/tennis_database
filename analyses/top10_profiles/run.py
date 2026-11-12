@@ -22,8 +22,8 @@ TOURS = ["WTA", "ATP"]
 SEED = 20261111
 MIN_CHARTED = 5
 MIN_CHARTED_TEST = 10      # a match bootstrap is unreliable with fewer charted matches: those players are not tested
-# Explicit, documented override of the staleness rule (decision of the user); nobody else is exempt.
-FORCE_INCLUDE = {"Jannik Sinner": "user confirmed still top 10 as of Nov 2026; only matches up to his last one (July 2026) are in the window"}
+# Explicit, documented override of the staleness rule; nobody else is exempt.
+FORCE_INCLUDE = {"Jannik Sinner": "still in the top 10 as of Nov 2026; only matches up to his last one (July 2026) are in the window"}
 
 
 def main() -> None:
@@ -125,7 +125,7 @@ def main() -> None:
 
     # ---- figures
     fr = {t: P[P.tour == t].assign(label=lambda x: x.name.map(plots.short)).reset_index(drop=True) for t in TOURS}
-    plots.scatter_two(fr, "hold", "brk", "Top players get there by different routes: some serve best, some return best",
+    plots.scatter_two(fr, "hold", "brk", "Who holds and who breaks among the current top 10",
                       "Service games held", "Return games won (breaks)",
                       {t: (hb_ref[t]["hold"], hb_ref[t]["brk"]) for t in TOURS}, ("tour average hold", "tour average break"), FIG_DIR / "hold_vs_break.png")
     surf = pd.DataFrame(surf_rows).merge(P[["name", "tour"]], on=["name", "tour"])
@@ -137,7 +137,7 @@ def main() -> None:
     Wf = {t: W[W.tour == t].reset_index(drop=True) for t in TOURS}
     for t in TOURS:
         Wf[t]["label"] = [f"{plots.short(n)} ({k}){'*' if f else ''}" for n, k, f in zip(Wf[t].name, Wf[t].charted_matches, Wf[t].few)]
-    plots.scatter_two(Wf, "u100", "w100", "Hitting more winners tends to come with more errors, but with ten players the link is loose",
+    plots.scatter_two(Wf, "u100", "w100", "Winners and unforced errors per 100 points in charted matches",
                       "Unforced errors per 100 points", "Winners per 100 points",
                       {t: (kp_tour[t]["u100"], kp_tour[t]["w100"]) for t in TOURS}, ("all charted players", "all charted players"),
                       FIG_DIR / "winners_vs_unforced.png", scale=1.0, hollow_col="few", pct=False,
@@ -150,7 +150,7 @@ def main() -> None:
     fr = {t: gap[gap.tour == t].assign(label=lambda x: x.name.map(plots.short)).reset_index(drop=True) for t in TOURS}
     plots.dotwhisker_grid(rows_for([("save_gap", "save_gap", "break points saved vs serve points won"),
                                     ("conv_gap", "conv_gap", "break points converted vs return points won")]),
-                          "Most top players' break-point results sit close to the tour average once their own level is allowed for",
+                          "Break points compared with each player's usual level",
                           ["Break points saved minus serve points won overall (percentage points)",
                            "Break points converted minus return points won overall (percentage points)"],
                           FIG_DIR / "pressure_vs_baseline.png", xlim_pad=2.0)

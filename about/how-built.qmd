@@ -1,0 +1,58 @@
+---
+title: "How this was built"
+description: "AI agents under my direction, with independent cross-review."
+---
+
+## In short
+
+An orchestrating Claude session split the work between two Claude agents, **Opus** (serve order, serve/return
+trends, height) and **Sonnet** (birth months, match length, top 10), who worked independently. Each then reviewed
+the other's analysis, re-running the code and checking the headline numbers with their own code. The author fixed
+or answered each point, and the reviewer verified the fixes. This review → fix → verify cycle repeated until both
+agreed.
+
+```{mermaid}
+%%| fig-cap: "One analysis, from question to published page."
+flowchart TD
+  Q["I set the question and the standards"] --> C["Orchestrating Claude session assigns the task"]
+  C --> B["Agent A builds it: code, tests, figures, write-up"]
+  B --> R["Agent B reviews: re-runs the code, re-checks the numbers"]
+  R --> F["Agent A fixes each point or explains why not"]
+  F --> V{"Agent B verifies"}
+  V -- "not yet" --> F
+  V -- "agreed" --> H["I approve and publish"]
+```
+
+## Tools
+
+Python (pandas, NumPy, SciPy, statsmodels, matplotlib), pytest, Make, [Quarto](https://quarto.org) for this
+site and GitHub Pages for hosting.
+
+## Data sources
+
+- **[TennisMyLife](https://stats.tennismylife.org)**: WTA, ATP and Challenger match files with serve statistics,
+  and the ATP player database. No licence is stated on the site; the data are credited here and are not
+  redistributed in the repository.
+- **Grand Slam point-by-point data** by Jeff Sackmann (`tennis_slam_pointbypoint`, 2011–2024), from the fork
+  [byshiny/tennis_slam_pointbypoint](https://github.com/byshiny/tennis_slam_pointbypoint), as the original repository
+  was deleted.
+- **[Match Charting Project](https://github.com/JeffSackmann/tennis_MatchChartingProject)**: crowd-sourced
+  shot-by-shot data, by Jeff Sackmann / Tennis Abstract and its volunteer charters.
+- **WTA players and matches** in the format of Jeff Sackmann's
+  [tennis_wta](https://github.com/JeffSackmann/tennis_wta).
+
+The Sackmann / Tennis Abstract data are licensed under
+[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) (attribution, non-commercial, share-alike).
+Exact versions are pinned in the
+[repository README](https://github.com/danae1968/tennis_database#data-sources).
+
+## Limitations
+
+- **Observational data.** These analyses describe patterns and adjust for what can be measured, such as ranking.
+  They cannot prove cause and effect.
+- **Gaps in the data.** Point-by-point data cover only the Grand Slams, and the Australian and French Opens have
+  no point timing after 2017. Heights are missing for many WTA players. The charted shot data are a self-selected
+  sample of matches, not a random one.
+- **A curiosity project.** This is a fan, largely AI-driven project, not a substitute for professional or peer-reviewed analysis. Take every outcome with a grain of salt.
+  Corrections are welcome through [GitHub issues](https://github.com/danae1968/tennis_database/issues).
+- **Snapshots.** Results reflect the data as downloaded (versions are pinned), and the 2026 season was incomplete.

@@ -1,9 +1,10 @@
 step,count
-"match rows 2014-2026 (ATP, WTA, Challenger)",133366
-"  removed: Davis/Fed Cup, Olympics, Finals etc.",6351
-  removed: retirement / walkover / unparseable score,4953
-completed matches,122062
-  with minutes,112750
-"  minutes outside [20,480] (dropped from minute metrics)",16
-  with serve points,120442
-"  points/game outside [3.9,10.0] (dropped from point metrics)",23
+"match rows 1995-2026 (ATP, WTA, Challenger)",320076
+"  removed: Davis/Fed Cup, Olympics, Finals etc.",19200
+  removed: retirement / walkover / unparseable score,10816
+"  removed: before the first usable year of the group (ATP bo3 1995, ATP bo5 2000, Challenger 2010, WTA 2009) or format not assignable",88706
+completed matches,201354
+  with minutes,180000
+"  minutes outside [20,480] (dropped from minute metrics)",19
+  with serve points,197407
+"  points/game outside [3.9,10.0] (dropped from point metrics)",53

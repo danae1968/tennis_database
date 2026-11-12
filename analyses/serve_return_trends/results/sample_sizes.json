@@ -5,11 +5,11 @@
  },
  "charting_matches": 7856,
  "linked_charting_pbp": 1102,
- "slam_pbp_matches": 6832,
+ "slam_pbp_matches": 10508,
  "tml_by_tour": {
-  "ATP": 26948,
-  "Challenger": 51345,
-  "WTA": 25135
+  "ATP": 98493,
+  "Challenger": 76030,
+  "WTA": 39627
  },
- "tml_matches": 103428
+ "tml_matches": 214150
 }

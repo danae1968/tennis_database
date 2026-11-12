@@ -1,0 +1,71 @@
+project:
+  type: website
+  output-dir: _site
+  # Render only the public site pages. Analysis pages include their README.md,
+  # so the README stays the single source of truth for GitHub and the site.
+  render:
+    - index.qmd
+    - about/*.qmd
+    - analyses/*/index.qmd
+    - analyses/*/METHODS.md
+
+execute:
+  enabled: false   # pages are Markdown plus committed figures; no code runs
+
+website:
+  title: "Tennis, by the numbers"
+  site-url: https://danae1968.github.io/tennis_database/
+  repo-url: https://github.com/danae1968/tennis_database
+  description: "Questions about professional tennis, answered with open data."
+  page-navigation: false
+  search: true
+  navbar:
+    left:
+      - text: Home
+        href: index.qmd
+      - text: Analyses
+        menu:
+          - text: "Does serving first help?"
+            href: analyses/serve_first/index.qmd
+          - text: "Birth months"
+            href: analyses/birth_months/index.qmd
+          - text: "Are matches getting longer?"
+            href: analyses/match_length_trends/index.qmd
+          - text: "Aces, breaks and winners over the years"
+            href: analyses/serve_return_trends/index.qmd
+          - text: "Does height predict the winner?"
+            href: analyses/height_predicts_winner/index.qmd
+          - text: "How the top 10 win"
+            href: analyses/top10_profiles/index.qmd
+      - text: How this was built
+        href: about/how-built.qmd
+    right:
+      - icon: github
+        href: https://github.com/danae1968/tennis_database
+        aria-label: GitHub repository
+  page-footer:
+    center: >-
+      Data: [TennisMyLife](https://stats.tennismylife.org) and Jeff Sackmann / Tennis Abstract
+      ([CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)).
+      Code and pages on [GitHub](https://github.com/danae1968/tennis_database).
+
+format:
+  html:
+    theme:
+      light: cosmo
+      dark: darkly
+    css: site/styles.css
+    toc: true
+    toc-depth: 2
+    fig-responsive: true
+    link-external-newwindow: false
+    anchor-sections: true
+    smooth-scroll: true
+    lightbox: auto
+    grid:
+      body-width: 1120px
+      margin-width: 220px
+      gutter-width: 1.5rem
+
+filters:
+  - site/site.lua

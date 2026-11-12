@@ -1,4 +1,4 @@
-"""Figures for the serve/return trends (house style and reader rules from :mod:`tennis.plotting`).
+"""Figures for the serve/return trends (style from :mod:`tennis.plotting`).
 
 Each figure makes one point; panels are ordered WTA, ATP, Challenger; surfaces differ by colour AND
 marker/line style; uncertainty is a faint band; 2026 (partial season) is drawn with an open marker.
@@ -10,7 +10,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from tennis.plotting import BLACK, BLUE, GREEN, GREY, ORANGE, VERMILLION, faint_band, light_grid, new_figure, save_figure
+from tennis.plotting import BLACK, BLUE, GREEN, GREY, ORANGE, VERMILLION, faint_band, light_grid, new_figure, save_figure, wrap
 
 SURFACE_STYLE = {"Hard": (BLUE, "o", "-"), "Clay": (VERMILLION, "s", "--"), "Grass": (GREEN, "^", ":")}
 GENDER_STYLE = {"W": (ORANGE, "s", "-"), "M": (BLUE, "o", "-")}
@@ -34,6 +34,12 @@ def _series(ax, t: pd.DataFrame, color: str, marker: str, ls: str, label: str, p
 
 
 def _year_ticks(ax, years, partial_year: int | None) -> None:
+    """Every second year for short series (the partial final season labelled as such); every fifth
+    year for long ones (the partial season is then explained in the caption)."""
+    years = list(years)
+    if years[-1] - years[0] > 14:
+        ax.set_xticks([y for y in years if y % 5 == 0])
+        return
     ticks = [y for y in years if y % 2 == 0] + ([partial_year] if partial_year and partial_year % 2 else [])
     ax.set_xticks(ticks, [f"{y}\n(partial)" if y == partial_year else str(y) for y in ticks])
 
@@ -43,7 +49,12 @@ def surface_panels(tab: pd.DataFrame, groups: list[str], title: str, ylabel: str
                    ylim: tuple[float, float] | None = None, emphasis: str | None = None) -> Path:
     """One panel per group (tour or gender), one line per surface; values in % (x ``scale``).
     With ``emphasis`` (a surface), the other surfaces are drawn as muted context."""
-    fig, axes = new_figure(1, len(groups), figsize=(4.6 * len(groups), 4.6), sharey=True)
+    spans = [max(int(np.ptp(tab.loc[tab[group_col] == g, "year"])) + 1, 1) for g in groups]
+    if max(spans) > 1.5 * min(spans):                   # panels of different length: same width per year
+        width = min(17.0, 0.27 * sum(spans) + 1.2)
+        fig, axes = new_figure(1, len(groups), figsize=(width, 4.8), sharey=True, gridspec_kw={"width_ratios": spans})
+    else:
+        fig, axes = new_figure(1, len(groups), figsize=(4.6 * len(groups), 4.6), sharey=True)
     axes = np.atleast_1d(axes)
     for ax, g in zip(axes, groups):
         sub = tab[tab[group_col] == g]
@@ -53,12 +64,15 @@ def surface_panels(tab: pd.DataFrame, groups: list[str], title: str, ylabel: str
                 _series(ax, t, c, m, ls, s, partial_year, scale, muted=bool(emphasis) and s != emphasis)
         ax.set_title(PANEL_NAME.get(g, g))
         light_grid(ax)
-        _year_ticks(ax, sorted(tab["year"].unique()), partial_year)
+        _year_ticks(ax, sorted(sub["year"].unique()), partial_year)
+        ax.set_xlim(sub["year"].min() - 0.8, sub["year"].max() + 0.8)
         if ylim:
             ax.set_ylim(*ylim)
     axes[0].set_ylabel(ylabel)
     _int_pct_ticks(axes[0])
-    axes[-1].legend(loc="best", frameon=False)
+    # legend from the panel with the most lines (e.g. the Challenger panel has no grass line)
+    handles, labels = max((ax.get_legend_handles_labels() for ax in axes), key=lambda hl: len(hl[1]))
+    axes[-1].legend(handles, labels, loc="best", frameon=False)
     fig.suptitle(title, fontsize=13)
     return save_figure(fig, path)
 
@@ -97,6 +111,50 @@ def source_comparison(comp: pd.DataFrame, path: Path) -> Path:
     axes[0].set_ylim(0, None)
     fig.suptitle("Charted Slam matches are typical Slam matches;\n"
                  "charters just count slightly fewer winners on the same matches", fontsize=13)
+    return save_figure(fig, path)
+
+
+TOUR_STYLE = {"WTA": (ORANGE, "s", "-"), "ATP": (BLUE, "o", "-"), "Challenger": (VERMILLION, "^", "--")}
+
+
+def index_panels(idx: pd.DataFrame, title: str, path: Path) -> Path:
+    """Like-for-like yearly levels (tournament fixed effects): aces and breaks, one line per tour,
+    labelled directly at the line ends."""
+    fig, axes = new_figure(1, 2, figsize=(12, 4.8))
+    for ax, (m, lab) in zip(axes, (("ace_rate", "Aces per 100 serve points"), ("break_rate", "Breaks per 100 return games"))):
+        for t, (c, mk, ls) in TOUR_STYLE.items():
+            g = idx[(idx["tour"] == t) & (idx["metric"] == m)].sort_values("year")
+            faint_band(ax, g["year"], 100 * g["lo"], 100 * g["hi"], c)
+            ax.plot(g["year"], 100 * g["rate"], color=c, marker=mk, ls=ls, lw=1.8, ms=4)
+            ax.annotate(t, (g["year"].iloc[-1], 100 * g["rate"].iloc[-1]), xytext=(6, 0), textcoords="offset points",
+                        va="center", fontsize=10.5, color=c)
+        ax.set_title(lab)
+        ax.set_xlim(idx["year"].min() - 1, idx["year"].max() + 5)
+        ax.set_xticks(range(1990, int(idx["year"].max()) + 1, 5))
+        light_grid(ax)
+        _int_pct_ticks(ax)
+    fig.suptitle(wrap(title, 95), fontsize=13)
+    return save_figure(fig, path)
+
+
+def coverage_figure(cov: pd.DataFrame, start: dict, path: Path) -> Path:
+    """Share of completed matches with serve statistics, per tour and year; seasons before each tour's
+    first season used are drawn light."""
+    tours = list(start)
+    cov = cov[cov["year"] >= 1991]
+    fig, axes = new_figure(1, len(tours), figsize=(14, 3.6), sharey=True)
+    for ax, t in zip(axes, tours):
+        g = cov[cov["tour"] == t]
+        ax.bar(g["year"], 100 * g["share"], width=0.8, color=np.where(g["year"] >= start[t], "#7a7a7a", "#d9d9d9"))
+        ax.set_title(t)
+        ax.set_ylim(0, 112)
+        ax.set_yticks([0, 50, 100], ["0%", "50%", "100%"])
+        ax.set_xticks(range(1995, int(g["year"].max()) + 1, 10))
+        if start[t] > cov["year"].min():
+            ax.annotate(f"used from {start[t]}", (start[t] - 0.4, 104), ha="left", va="bottom", fontsize=9.5, color=GREY)
+        light_grid(ax)
+    axes[0].set_ylabel("Matches with serve stats")
+    fig.suptitle("Serve statistics are near-complete from 1991 (ATP), 2009 (WTA) and 2010 (Challenger)", fontsize=13)
     return save_figure(fig, path)
 
 

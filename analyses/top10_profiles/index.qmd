@@ -1,0 +1,6 @@
+---
+# Site page for this analysis. The text lives in README.md, the single source
+# for GitHub and the site; the page title comes from its first heading.
+---
+
+{{< include README.md >}}

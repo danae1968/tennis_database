@@ -1,4 +1,5 @@
-"""Serve and return trends 2016-2026: aces, breaks, winners (excl. aces) and unforced errors.
+"""Serve and return trends: aces and breaks (WTA 2009-, ATP 1991-, Challenger 2010-), Slam winners
+(excl. aces) and unforced errors 2011-2024, Match Charting 2016-2026.
 
     .venv/bin/python analyses/serve_return_trends/run.py        (or: make serve_return_trends)
 """
@@ -14,7 +15,7 @@ import pandas as pd
 if __package__ in (None, ""):                       # run as a script: make ``analyses.*`` importable
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-from analyses.serve_return_trends import data, plots  # noqa: E402
+from analyses.serve_return_trends import data, eras, plots  # noqa: E402
 from analyses.serve_return_trends import winners as W  # noqa: E402
 from tennis.paths import analysis_dirs  # noqa: E402
 from tennis.plotting import GREEN as GREEN_, GREY as GREY_  # noqa: E402
@@ -60,23 +61,64 @@ def trends(d: pd.DataFrame, group: str, groups, metrics: dict, cluster: str, fe:
 
 def main() -> None:
     # ------------------------------------------------ A1/A2 aces and breaks (TennisMyLife)
-    d, log = data.load_matches()
+    raw = data.load_raw()
+    _save(data.coverage_table(raw), "coverage_serve_stats.csv")
+    d, log = data.build_match_frame(raw)
+    del raw
     _save(log, "cleaning_tml.csv")
     full = d[~d["partial_year"]]
+    recent = full[full["year"].between(*data.RECENT)]
     y_all = yearly(d, ["tour"], METRICS, "edition")
     y_surf = yearly(d[d["surface"].notna()], ["tour", "surface"], METRICS, "edition")
     _save(y_all, "yearly_tml_by_tour.csv")
     _save(y_surf, "yearly_tml_by_tour_surface.csv")
-    tr = pd.concat([trends(full, "tour", data.TOURS, METRICS, "tournament", "C(surface)", "TennisMyLife 2016-2025"),
-                    trends(full, "tour", data.TOURS, METRICS, "tournament", "C(tournament)",  # absorbs surface
-                           "TennisMyLife 2016-2025, tournament fixed effects")])
+    tr = pd.concat([trends(full, "tour", data.TOURS, METRICS, "tournament", "C(surface)", "whole period"),
+                    trends(full, "tour", data.TOURS, METRICS, "tournament", "C(tournament)", "whole period, tournament fixed effects"),
+                    trends(recent, "tour", data.TOURS, METRICS, "tournament", "C(surface)", "2016-2025"),
+                    trends(recent, "tour", data.TOURS, METRICS, "tournament", "C(tournament)", "2016-2025, tournament fixed effects")])
+    first = full.groupby("tour")["year"].min()
+    tr["first_year"] = np.where(tr["source"].str.startswith("2016"), 2016, tr["tour"].map(first))
     _save(tr, "trends_tml.csv")
     surf_tab = yearly(d[d["surface"].notna()], ["tour", "surface"], {"n": ("aces", "svpt")}, "edition")
     _save(surf_tab.groupby(["tour", "surface"]).n_matches.sum().reset_index(), "matches_by_tour_surface.csv")
+    # long-run shape: slope before vs after 2016, like-for-like yearly levels, step check
+    kink, idx, steps = [], [], []
+    for t_ in data.TOURS:
+        for m in ("ace_rate", "break_rate"):
+            num, den = METRICS[m]
+            for surf in ("All", "Hard", "Clay", "Grass"):
+                s = full[full["tour"] == t_] if surf == "All" else full[(full["tour"] == t_) & (full["surface"] == surf)]
+                if s["year"].nunique() >= 8 and s["year"].min() < eras.KNOT - 3 and len(s) >= 2000:
+                    kink.append({"tour": t_, "metric": m, "surface": surf, **eras.slope_change(s, m, den)})
+            ix = eras.like_for_like_index(full[full["tour"] == t_], m, num, den, ref_year=data.RECENT[1])
+            idx.append(ix.assign(tour=t_, metric=m))
+            steps.append(eras.year_on_year_jumps(ix).assign(tour=t_, metric=m))
+    _save(pd.DataFrame(kink), "slope_change_2016.csv")
+    # sensitivity: ATP Slam serve-point counts look about 10% high before 2000 (Slam points per game 6.9-7.1 in
+    # 1992-99 against 6.3 later), which would understate early Slam ace rates; refit ATP without those Slams
+    atp = full[full["tour"] == "ATP"]
+    early_slams = (atp["tourney_level"] == "G") & (atp["year"] < 2000)
+    ppg = atp.assign(ppg=atp["svpt"] / atp["service_games"], slam=atp["tourney_level"] == "G", pre2000=atp["year"] < 2000)
+    sens = [{"check": "ATP Slam serve points per service game, 1991-99", "value": float(ppg[ppg.slam & ppg.pre2000]["svpt"].sum() / ppg[ppg.slam & ppg.pre2000]["service_games"].sum())},
+            {"check": "ATP Slam serve points per service game, 2000-25", "value": float(ppg[ppg.slam & ~ppg.pre2000]["svpt"].sum() / ppg[ppg.slam & ~ppg.pre2000]["service_games"].sum())},
+            {"check": "ATP non-Slam serve points per service game, 1991-99", "value": float(ppg[~ppg.slam & ppg.pre2000]["svpt"].sum() / ppg[~ppg.slam & ppg.pre2000]["service_games"].sum())}]
+    for lab, x in (("all ATP matches", atp), ("without Slams before 2000", atp[~early_slams]), ("without any Slams", atp[atp["tourney_level"] != "G"])):
+        for m in ("ace_rate", "break_rate"):
+            r = trend_per_decade(x, m, weight=METRICS[m][1], cluster="tournament", controls="C(tournament)", scale=100)
+            k = eras.slope_change(x, m, METRICS[m][1])
+            sens.append({"check": f"{m}: {lab}", "value": r["per_decade"], "lo": r["lo"], "hi": r["hi"],
+                         "slope_before_2016": k["slope_before"], "slope_after_2016": k["slope_after"], "change": k["change"],
+                         "change_lo": k["change_lo"], "change_hi": k["change_hi"]})
+    _save(pd.DataFrame(sens), "sensitivity_atp_early_slams.csv")
+    idx = pd.concat(idx, ignore_index=True)
+    _save(idx, "like_for_like_index.csv")
+    _save(pd.concat(steps, ignore_index=True), "step_check.csv")
 
     # ------------------------------------------------ A3 winners: Slam pbp and Match Charting
     p = W.load_pbp_matches()
+    _save(W.feed_check(p), "slam_feed_check.csv")
     p = p[p["annotated"]].copy()
+    _save(W.round_reweighted(p, p), "slam_round_reweighting.csv")
     c = W.load_charting_matches()
     for df in (p, c):
         for m, (num, den) in WIN_METRICS.items():
@@ -122,28 +164,41 @@ def main() -> None:
                         .assign(sample="Without the most prolific charter")])
     _save(c_ns_y, "yearly_charting_nonslam_by_charter_sample.csv")
 
-    # is the break decline really concentrated on hard courts? slope differences (year x surface)
+    # is the break decline concentrated on hard courts? slope differences (year x surface), both windows
     import statsmodels.formula.api as smf
     sd = []
-    for t in data.TOURS:
-        x = full[(full["tour"] == t) & full["surface"].isin(["Hard", "Clay", "Grass"])].copy()
-        x["yr"] = x["year"] - 2016
-        res = smf.wls("break_rate ~ yr * C(surface, Treatment('Hard'))", x, weights=x["service_games"]).fit(
-            cov_type="cluster", cov_kwds={"groups": pd.factorize(x["tournament"])[0]})
-        for s_ in ("Clay", "Grass"):
-            k = f"yr:C(surface, Treatment('Hard'))[T.{s_}]"
-            b_, se_ = float(res.params[k]), float(res.bse[k])
-            sd.append({"tour": t, "comparison": f"{s_} minus Hard slope", "per_decade": 1000 * b_,
-                       "lo": 1000 * (b_ - 1.96 * se_), "hi": 1000 * (b_ + 1.96 * se_), "p": float(res.pvalues[k])})
+    for win, frame in (("whole period", full), ("2016-2025", recent)):
+        for t in data.TOURS:
+            x = frame[(frame["tour"] == t) & frame["surface"].isin(["Hard", "Clay", "Grass"])].copy()
+            x["yr"] = x["year"] - x["year"].min()
+            res = smf.wls("break_rate ~ yr * C(surface, Treatment('Hard'))", x, weights=x["service_games"]).fit(
+                cov_type="cluster", cov_kwds={"groups": pd.factorize(x["tournament"])[0]})
+            for s_ in ("Clay", "Grass"):
+                k = f"yr:C(surface, Treatment('Hard'))[T.{s_}]"
+                b_, se_ = float(res.params[k]), float(res.bse[k])
+                sd.append({"window": win, "tour": t, "comparison": f"{s_} minus Hard slope", "per_decade": 1000 * b_,
+                           "lo": 1000 * (b_ - 1.96 * se_), "hi": 1000 * (b_ + 1.96 * se_), "p": float(res.pvalues[k])})
     _save(pd.DataFrame(sd), "break_trend_surface_differences.csv")
-    wt = pd.concat([trends(p, "gender", ("W", "M"), WIN_METRICS, "event", "C(slam)", "Slam pbp 2016-2024"),
+    wt = pd.concat([trends(p, "gender", ("W", "M"), WIN_METRICS, "event", "C(slam)", "Slam pbp 2011-2024"),
+                    trends(p[p["year"] >= 2016], "gender", ("W", "M"), WIN_METRICS, "event", "C(slam)", "Slam pbp 2016-2024"),
+                    trends(p[p["year"] <= 2015], "gender", ("W", "M"), WIN_METRICS, "event", "C(slam)", "Slam pbp 2011-2015"),
                     trends(c[c["year"] < data.PARTIAL_YEAR], "gender", ("W", "M"), WIN_METRICS, "charter", "C(surface)",
                            "Match Charting 2016-2025")])
     _save(wt, "trends_winners.csv")
     # robustness: the two Slams with the same (IBM) feed in every year
     q = p[p["slam"].isin(["usopen", "wimbledon"])]
-    _save(trends(q, "gender", ("W", "M"), WIN_METRICS, "event", "C(slam)", "Slam pbp, US Open + Wimbledon only"),
-          "trends_winners_uso_wimbledon.csv")
+    _save(pd.concat([trends(q, "gender", ("W", "M"), WIN_METRICS, "event", "C(slam)", "Slam pbp 2011-2024, US Open + Wimbledon only"),
+                     trends(q[q["year"] >= 2016], "gender", ("W", "M"), WIN_METRICS, "event", "C(slam)",
+                            "Slam pbp 2016-2024, US Open + Wimbledon only")]), "trends_winners_uso_wimbledon.csv")
+    # by Slam: is the decline shared, or carried by one event? (clustered by edition: one per year, t with G-1 df)
+    bs = []
+    for slam in ("ausopen", "frenchopen", "usopen", "wimbledon"):
+        for g in ("W", "M"):
+            s_ = p[(p["slam"] == slam) & (p["gender"] == g)]
+            r = trend_per_decade(s_, "winners_ex_rate", weight="points", cluster="event", scale=100)
+            bs.append({"slam": slam, "gender": g, "first_year": int(s_["year"].min()), "last_year": int(s_["year"].max()),
+                       "winners_ex_per_100": 100 * s_["winners_ex"].sum() / s_["points"].sum(), **r})
+    _save(pd.DataFrame(bs), "trends_winners_by_slam.csv")
 
     # ------------------------------------------------ source comparison and selection bias
     L = W.link_charting_to_pbp(c, p)
@@ -202,19 +257,20 @@ def main() -> None:
         stale.unlink()
     pick = lambda t, m: t[t["metric"] == m]  # noqa: E731
     wta_atp = lambda t: t.rename(columns={"gender": "tour"}).replace({"tour": {"W": "WTA", "M": "ATP"}})  # noqa: E731
-    plots.surface_panels(pick(y_surf, "ace_rate"), list(data.TOURS), "Ace rates have barely moved since 2016",
+    # Challenger grass: a handful of events a year (about 80 matches), too thin to draw as a trend line
+    y_plot = y_surf[~((y_surf["tour"] == "Challenger") & (y_surf["surface"] == "Grass"))]
+    plots.surface_panels(pick(y_plot, "ace_rate"), list(data.TOURS), "On the WTA and ATP tours, aces rose until the mid-2010s and have levelled off since",
                          "Aces per 100 serve points", FIG / "fig1_aces_by_surface.png", data.PARTIAL_YEAR)
-    plots.surface_panels(pick(y_surf, "break_rate"), list(data.TOURS),
-                         "Breaks of serve have become slightly rarer, mainly on hard courts",
-                         "Breaks per 100 return games", FIG / "fig2_breaks_by_surface.png", data.PARTIAL_YEAR, emphasis="Hard")
+    plots.surface_panels(pick(y_plot, "break_rate"), list(data.TOURS),
+                         "Breaks of serve have slowly become rarer on the WTA and ATP tours",
+                         "Breaks per 100 return games", FIG / "fig2_breaks_by_surface.png", data.PARTIAL_YEAR)
     plots.surface_panels(wta_atp(pick(p_y, "winners_ex_rate")), ["WTA", "ATP"],
-                         "At the Slams, winners (not counting aces) have edged down since 2016",
+                         "Slam winners (not counting aces) showed no clear change until about 2016, then edged down",
                          "Winners per 100 points", FIG / "fig3_winners_slams.png", None)
     plots.source_comparison(comp[comp["metric"] == "winners_ex_rate"], FIG / "fig4_source_comparison.png")
-    plots.tour_lines(pick(y_all, "ace_rate"), "ATP players hit twice as many aces as WTA players",
-                     "Aces per 100 serve points", FIG / "figA1_aces_by_tour.png", data.PARTIAL_YEAR)
-    plots.tour_lines(pick(y_all, "break_rate"), "WTA servers are broken in about a third of games",
-                     "Breaks per 100 return games", FIG / "figA2_breaks_by_tour.png", data.PARTIAL_YEAR)
+    plots.index_panels(idx, "Like for like, aces levelled off in the mid-2010s while breaks kept falling",
+                       FIG / "figA1_like_for_like.png")
+    plots.coverage_figure(pd.read_csv(RES / "coverage_serve_stats.csv"), data.START, FIG / "figA2_serve_stats_coverage.png")
     plots.surface_panels(wta_atp(pick(c_y, "winners_ex_rate")), ["WTA", "ATP"],
                          "In charted matches, clay courts show the most winners",
                          "Winners per 100 points", FIG / "figA3_winners_charting_by_surface.png", data.PARTIAL_YEAR)

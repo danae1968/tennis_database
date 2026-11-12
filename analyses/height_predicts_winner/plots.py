@@ -1,4 +1,4 @@
-"""Figures for "can height predict the winner?" (house style and reader rules from tennis.plotting)."""
+"""Figures for "can height predict the winner?" (style from tennis.plotting)."""
 from __future__ import annotations
 
 from pathlib import Path
@@ -97,4 +97,26 @@ def coverage(cov: pd.DataFrame, path: Path) -> Path:
     _pct(ax, 0.0, 1.05, step=20)
     ax.set_ylabel("Matches with both heights")
     ax.set_title("WTA heights are often missing for recent seasons", fontsize=13)
+    return save_figure(fig, path)
+
+
+def reach_top20(reach: pd.DataFrame, path: Path) -> Path:
+    """Share of players who reached the top 20, by height band."""
+    fig, axes = new_figure(1, 2, figsize=(10, 4.6), sharey=True)
+    for ax, tour in zip(axes, ("WTA", "ATP")):
+        c, m = TOUR_STYLE[tour]
+        b = reach[reach["tour"] == tour].reset_index(drop=True)
+        x = np.arange(len(b))
+        ax.vlines(x, b["top20_lo"], b["top20_hi"], color=c, lw=0.8, alpha=0.6)
+        ax.plot(x, b["top20"], color=c, lw=2, marker=m, ms=8, mec="white")
+        for xi, n in enumerate(b["n_players"]):
+            ax.annotate(f"n={n}", (xi, 0.01), ha="center", fontsize=8, color=GREY)
+        ax.set_xticks(x)
+        ax.set_xticklabels(b["band"], fontsize=9)
+        ax.set_title("Women (WTA)" if tour == "WTA" else "Men (ATP)")
+        ax.set_xlabel("Height band (cm)")
+        light_grid(ax)
+        _pct(ax, 0, 0.8, step=20)
+    axes[0].set_ylabel("Share of players who reached the top 20")
+    fig.suptitle("Taller players reach the top 20 more often, on both tours", fontsize=13)
     return save_figure(fig, path)

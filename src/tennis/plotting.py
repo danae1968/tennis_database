@@ -1,21 +1,9 @@
-"""House plotting style for all analyses (the user's figure guidelines).
+"""Shared plotting style and helpers for all analyses.
 
-* Okabe-Ito colour-blind-safe palette; men / ATP = #0072B2 (blue), women / WTA = #E69F00 (orange)
-  in every figure.  Series must also differ by marker and/or line style (never colour alone).
-* Constrained layout (``new_figure``) and ``save_figure`` with ``bbox_inches="tight"`` at 150 dpi, so
-  no text is clipped.  Ticks >= 10 pt, labels >= 11 pt.
-
-Plots are for the READER (user rule):
-* One point per figure; the title states the takeaway in plain words ("Aces are rising on the WTA
-  tour"), not the pipeline ("Aces/svpt by year, tour-level incl. Slams").
-* No internal conventions or process notes in figures ("WTA left", "(dashed)", sample definitions,
-  caveats): those belong in the README caption.  Panel titles "WTA" / "ATP" are enough.
-* Uncertainty must not dominate: use :func:`faint_band` / :data:`FAINT_ERR` (alpha <= 0.15, thin
-  lines); drop error crosses on labelled scatter plots and give the typical CI in the caption.
-  Keep CIs (lightly) only when they are the message.
-* Little clutter: only needed gridlines; label reference lines directly with
-  :func:`label_hline` / :func:`label_vline` instead of a legend; no duplicated legends; few ticks with
-  sensible units (:func:`percent_axis`).
+Okabe-Ito colour palette (women / WTA #E69F00, men / ATP #0072B2), with markers and line styles that
+also differ between series; constrained layout and tight saving at 150 dpi; helpers for faint
+uncertainty bands (:func:`faint_band`), directly labelled reference lines (:func:`label_hline`,
+:func:`label_vline`) and percentage axes (:func:`percent_axis`).
 """
 from __future__ import annotations
 

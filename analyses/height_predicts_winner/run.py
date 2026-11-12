@@ -17,6 +17,7 @@ if __package__ in (None, ""):                       # run as a script: make ``an
 from analyses.height_predicts_winner import data as D  # noqa: E402
 from analyses.height_predicts_winner import model as Mo  # noqa: E402
 from analyses.height_predicts_winner import plots  # noqa: E402
+from analyses.height_predicts_winner import rank as Rk  # noqa: E402
 from tennis.paths import analysis_dirs  # noqa: E402
 from tennis.stats import expit, wilson_ci  # noqa: E402
 
@@ -172,18 +173,49 @@ def main() -> None:
     _save(binned, "taller_player_by_gap.csv")
     curve = pd.DataFrame(curve_rows)
     _save(curve, "fitted_height_curve.csv")
+    # does height predict ranking?  (player level) and how much of height's effect on winning does ranking absorb?
+    players = Rk.player_table(raw)
+    corr_rows, reach_frames, att_rows, sel_rows = [], [], [], []
+    for tour in D.TOURS:
+        pl = players[players["tour"] == tour]
+        for col in ("median_rank", "best_rank"):
+            corr_rows.append({"tour": tour, "ranking_summary": col, **Rk.spearman_height_rank(pl, col, seed=D.SEED)})
+        bands = Rk.height_bands(pl["height"])
+        reach_frames.append(Rk.reach_by_band(pl, bands).assign(tour=tour))
+        att_rows.append({"tour": tour, **Rk.attenuation(cc[cc["tour"] == tour].reset_index(drop=True), seed=D.SEED)})
+        allp = Rk.player_table(raw, require_height=False)
+        sel_rows.append({"tour": tour, "players_ranked_20plus_matches_with_height": len(pl),
+                         "players_ranked_20plus_matches": int((allp["tour"] == tour).sum()),
+                         "median_height_cm": float(pl["height"].median()), "mean_height_cm": float(pl["height"].mean())})
+    thr_rows = []                                       # sensitivity of the correlation to the match threshold
+    for tour in D.TOURS:
+        for k in (1, 5, 10, 20, 40):
+            pk = Rk.player_table(raw, min_matches=k)
+            pk = pk[pk["tour"] == tour]
+            thr_rows.append({"tour": tour, "min_ranked_matches": k, **Rk.spearman_height_rank(pk, "median_rank", seed=D.SEED),
+                             "share_top100": float((pk["best_rank"] <= 100).mean())})
+    _save(pd.DataFrame(thr_rows), "height_rank_threshold_sensitivity.csv")
+    _save(pd.DataFrame(corr_rows), "height_rank_correlation.csv")
+    reach = pd.concat(reach_frames, ignore_index=True)
+    _save(reach, "height_reach_top_by_band.csv")
+    _save(pd.DataFrame(att_rows), "height_effect_absorbed_by_ranking.csv")
+    _save(players, "player_height_rank.csv")
     (RES / "headline.json").write_text(json.dumps(plain, indent=1, default=float))
 
     plots.taller_player_curve(binned, curve, FIG / "fig1_taller_player_wins.png")
     plots.model_comparison(comp, FIG / "fig2_model_comparison.png")
     plots.by_surface(surf, FIG / "fig3_by_surface.png")
     plots.coverage(cov, FIG / "figA1_height_coverage.png")
+    plots.reach_top20(reach, FIG / "fig4_height_reaches_top20.png")
     pd.set_option("display.width", 200)
     print(comp.round(4).to_string(index=False))
     print(pd.DataFrame(added).round(5).to_string(index=False))
     print(surf.round(3).to_string(index=False))
     print(pd.DataFrame(mech_rows).round(4).to_string(index=False))
     print(pd.DataFrame(miss_rows).round(4).to_string(index=False))
+    for nm in (corr_rows, att_rows, sel_rows, thr_rows):
+        print(pd.DataFrame(nm).round(4).to_string(index=False))
+    print(reach.round(3).to_string(index=False))
 
 
 if __name__ == "__main__":

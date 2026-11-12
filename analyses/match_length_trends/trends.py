@@ -51,3 +51,19 @@ def trend_per_decade(df: pd.DataFrame, value: str, cluster: str, controls: str =
     tf = (lambda v: 100 * (np.exp(10 * v) - 1)) if log else (lambda v: 10 * v)
     return {"n": int(len(d)), "clusters": int(d["_cl"].nunique()), "per_decade": tf(b), "ci_lo": tf(float(lo)),
             "ci_hi": tf(float(hi)), "p": float(r.pvalues["yc"]), "unit": "% per decade" if log else f"{value} per decade"}
+
+
+def trend_with_step(df: pd.DataFrame, value: str, cluster: str, controls: str = "", step_year: int = 2013,
+                    log: bool = False) -> dict[str, dict]:
+    """Trend per decade over the whole period, allowing a one-off level shift in ``step_year``, plus the
+    separate trends before and from ``step_year``.  Returns ``{"whole (step allowed)", "before", "since"}``."""
+    d = df.copy()
+    d["step"] = (d["year"] >= step_year).astype(int)
+    ctrl = (controls + " + " if controls else "") + "step"
+    out = {"whole (step allowed)": trend_per_decade(d, value, cluster, ctrl, y0=int(d["year"].min()), log=log)}
+    for lab, part in (("before", d[d["year"] < step_year]), ("since", d[d["year"] >= step_year])):
+        try:
+            out[lab] = trend_per_decade(part, value, cluster, controls, y0=int(part["year"].min()), log=log)
+        except Exception as e:           # too few years for a trend
+            out[lab] = {"n": len(part), "per_decade": np.nan, "error": str(e)}
+    return out
